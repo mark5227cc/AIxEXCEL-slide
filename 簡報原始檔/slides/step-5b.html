@@ -1,0 +1,52 @@
+<section id="step-5b" data-transition="fade" style="background:#FAF7F0;color:#1F3A36;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;flex-direction:row;gap:16px;align-items:center">
+<p style="font-size:24px;font-weight:700;color:#FAF7F0;background:#B4481A;padding:4px 20px;border-radius:40px">講師示範</p>
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#B4481A">案例一｜步驟 5 之二</p>
+</div>
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">查到期日，加上提醒</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:48px">
+<div style="width:980px;display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.6;background:#1F3A36;color:#F4EFE3;padding:16px 24px;border-radius:16px">「人員名冊」B 欄是身分證字號，D 欄是民國到期日，資料在第 4 到 303 列。<br>我想在人員總表 M6 用 C6 的身分證字號找到這個人的到期日，找不到就顯示「未登錄」。</p>
+<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.6;background:#1F3A36;color:#F4EFE3;padding:16px 24px;border-radius:16px">人員名冊 E 欄是西元到期日。我想在人員總表 N6 算出距離今天還剩幾天，<br>名冊找不到這個人就留空白，不要出現錯誤。</p>
+<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.6;background:#1F3A36;color:#F4EFE3;padding:16px 24px;border-radius:16px">人員總表 N6 是剩餘天數，N2 是提醒天數 180。<br>我想在 O6 顯示：N6 小於 0 是「已到期」，N2 天以內是「即將到期」，其他空白。N6 是空白時 O6 也空白。</p>
+<p style="font-size:26px;line-height:1.5;color:#5C6B67;background:#F0EBDD;border:3px dashed #B4481A;border-radius:16px;padding:14px 24px"><b>【公式待填】</b>人員總表 M6、N6、O6：實測後填入 AI 回覆的公式</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-direction:column;gap:8px;background:#B4481A;border-radius:16px;padding:28px 36px">
+<p style="font-size:40px;font-weight:900;line-height:1.3;color:#FAF7F0">這就是 VLOOKUP。</p>
+<p style="font-size:30px;font-weight:700;line-height:1.4;color:#FAF7F0">是 AI 寫的，不是你背的。</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px;background:#FFFDF8;border:1px solid #E2DACA;border-radius:16px;padding:28px 36px">
+<h3 style="font-size:32px;font-weight:700;line-height:1.2;color:#1F6B5F">驗算</h3>
+<div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:12px 0px 0px 0px">
+<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px">Z900000021</p>
+<p style="font-size:26px;font-weight:700">116/02/08　即將到期</p>
+</div>
+<div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:12px 0px 0px 0px">
+<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px">Z900000031</p>
+<p style="font-size:26px;font-weight:700">115/10/24　已到期</p>
+</div>
+<div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:12px 0px 0px 0px">
+<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px">Z900000005</p>
+<p style="font-size:26px;font-weight:700">未登錄</p>
+</div>
+</div>
+<p style="font-size:26px;line-height:1.5;color:#5C6B67">剩餘天數每天都會變，以開啟檔案當天為準。</p>
+</div>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#5C6B67">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#5C6B67">15 / 28</p></div>
+<aside>【時間】25:15–27:00（1 分 45 秒，講師示範）
+【重點】
+・回到人員總表。三個提問連續做：M6 查到期日、N6 算剩餘天數、O6 顯示提醒。每條貼上後往下填滿。
+・拆解提問：
+　第一問講清楚「用哪一格去找」「去哪張表找」「找不到怎麼辦」。
+　第二問講清楚「找不到就留空白，不要出現錯誤」。
+　第三問把三種情況逐一列出，連「N6 是空白時」也交代。
+・全課金句，停一下再講：「大家剛剛看到的這條公式，就是 VLOOKUP。是 AI 寫的，不是你背的。」
+・補一句：如果 AI 給的是別的查找寫法也沒關係，重點是你說得出「用這個找那個」。
+・驗算：Z900000021 到期日 116/02/08、即將到期；Z900000031 到期日 115/10/24、已到期；Z900000005 名冊未登錄。
+・剩餘天數以開啟檔案當天計算，不要念出固定天數。
+【待辦】實測後填入 AI 實際回覆的公式；補人員總表 C5:O10 的結果截圖。若實測時 AI 沒有使用 VLOOKUP，橘色方塊的文字要跟著改。</aside>
+</section>

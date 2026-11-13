@@ -1,0 +1,41 @@
+<section id="case2-formulas" data-transition="fade" style="background:#FAF7F0;color:#1F3A36;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#B4481A">案例二｜AI 寫的公式</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">三條規則，三條公式</h2>
+</div>
+<div style="display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-direction:row;gap:32px;align-items:center">
+<div style="width:400px;display:flex;flex-direction:column;gap:4px">
+<h3 style="font-size:32px;font-weight:700;line-height:1.3">清理姓名</h3>
+<p style="font-size:26px;line-height:1.45;color:#3F5450">去掉「★」和前後空白<br>整理區 F2</p>
+</div>
+<p style="flex:1;font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.6;background:#1F3A36;color:#F4EFE3;padding:22px 28px;border-radius:16px">=IF(交通車貼上區!B2="","",TRIM(SUBSTITUTE(交通車貼上區!B2,"★","")))</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:center">
+<div style="width:400px;display:flex;flex-direction:column;gap:4px">
+<h3 style="font-size:32px;font-weight:700;line-height:1.3">清冊次數：加總</h3>
+<p style="font-size:26px;line-height:1.45;color:#3F5450">同一個姓名的次數加起來<br>比對總表 C6</p>
+</div>
+<p style="flex:1;font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.6;background:#1F3A36;color:#F4EFE3;padding:22px 28px;border-radius:16px">=IF(B6="","",SUMIF(整理區!$A$2:$A$1001,B6,整理區!$B$2:$B$1001))</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:center">
+<div style="width:400px;display:flex;flex-direction:column;gap:4px">
+<h3 style="font-size:32px;font-weight:700;line-height:1.3">交通車次數：計數</h3>
+<p style="font-size:26px;line-height:1.45;color:#3F5450">同一個姓名出現幾列<br>比對總表 D6</p>
+</div>
+<p style="flex:1;font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.6;background:#1F3A36;color:#F4EFE3;padding:22px 28px;border-radius:16px">=IF(B6="","",COUNTIF(整理區!$F$2:$F$5001,B6))</p>
+</div>
+</div>
+<p style="font-size:30px;font-weight:700;line-height:1.5;background:#F0EBDD;border-radius:16px;padding:24px 36px">「加總」變成 SUMIF，「計數」變成 COUNTIF。你說的是白話，函數是 AI 選的。</p>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#5C6B67">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#5C6B67">22 / 28</p></div>
+<aside>【時間】36:00–38:00（2 分鐘）
+【重點】
+・這三條是工具裡實際在用的公式，原樣呈現。不用逐字解釋，只要讓學員看出「規則裡的動詞」對應到哪個函數。
+・清理姓名：SUBSTITUTE 把「★」換成空的，TRIM 去掉前後空白。外面那層 IF 是「這一列沒資料就留空白」。
+・清冊次數：規則說「合併計數、加總」，AI 用 SUMIF。意思是：在整理區找到同一個姓名的每一列，把次數加起來。
+・交通車次數：規則說「計數相同姓名的次數」，AI 用 COUNTIF。意思是：數這個姓名出現幾列，一列就是一趟。
+・金額的做法和清冊次數一樣是 SUMIF，只是換一欄，不另外列出。
+・請學員注意公式裡的 $A$2:$A$1001、B6 這些寫法：公式是用「位置」在找資料。這是下一段的主題，先點一下。
+・呼應案例一的金句：這些函數是 AI 選的，你只需要把「加總」「計數」「去掉什麼」講清楚。
+【說明】公式取自 交通車趟次核銷比對.xlsx，如工具日後修改，這張要同步更新。</aside>
+</section>

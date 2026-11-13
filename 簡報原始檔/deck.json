@@ -1,0 +1,74 @@
+{
+  "v": 4,
+  "attachments": {},
+  "cover": "cover",
+  "createdOnFiles": {
+    "at": "2026-11-12T09:00:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "faces": {
+    "lxgw-wenkai-mono-tc": {
+      "family": "LXGW WenKai Mono TC",
+      "href": "https://fonts.googleapis.com/css2?family=LXGW+WenKai+Mono+TC:wght@400;700&display=swap"
+    },
+    "noto-sans-tc": {
+      "family": "Noto Sans TC",
+      "href": "https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
+    }
+  },
+  "lists": "css",
+  "order": [
+    "cover",
+    "scene",
+    "takeaway",
+    "result",
+    "four-things",
+    "privacy",
+    "opener",
+    "case1-task",
+    "case1-rules",
+    "ai-plan",
+    "step-1-2",
+    "step-3",
+    "step-4",
+    "step-5a",
+    "step-5b",
+    "stuck",
+    "verify",
+    "case2",
+    "case2-brief",
+    "case2-findings",
+    "case2-design",
+    "case2-formulas",
+    "case2-verify",
+    "locate",
+    "locate-choose",
+    "summary",
+    "more-uses",
+    "recap"
+  ],
+  "sections": {
+    "s1": {
+      "description": "開場與成果展示：用年底盤點積分的情境帶出課程，先看完成的人員總表。",
+      "start": "cover"
+    },
+    "s2": {
+      "description": "與 AI 協作：四樣東西、個資原則、起手式的五個區塊。",
+      "start": "four-things"
+    },
+    "s3": {
+      "description": "案例一：年度積分與到期提醒，從規則、AI 規劃、五步實作到卡關與驗算。",
+      "start": "case1-task"
+    },
+    "s4": {
+      "description": "案例二：交通車趟次核銷比對，呈現與 AI 一起設計比對工具的過程，以及用欄位位置或項目名稱找資料的差別。",
+      "start": "case2"
+    },
+    "s5": {
+      "description": "延伸與收尾：請 AI 寫摘要、同一招的其他用途、流程回顧與贈品。",
+      "start": "summary"
+    }
+  },
+  "title": "Excel × AI 長照行政課程簡報"
+}

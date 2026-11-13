@@ -1,0 +1,39 @@
+<section id="case2-findings" data-transition="fade" style="background:#FAF7F0;color:#1F3A36;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#B4481A">案例二｜AI 先看資料</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">規則沒寫到的四件事</h2>
+</div>
+<div style="display:flex;flex-direction:column;gap:0px">
+<div style="display:flex;flex-direction:row;gap:32px;align-items:baseline;border-top:1px solid #CFC6B2;padding:14px 0px">
+<p style="width:56px;font-size:40px;font-weight:900;color:#B4481A">1</p>
+<p style="width:760px;font-size:30px;font-weight:700;line-height:1.45">交通車資料的姓名後面多了「★」</p>
+<p style="flex:1;font-size:28px;line-height:1.45;color:#3F5450">直接比會全部對不上，要先去掉</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:baseline;border-top:1px solid #CFC6B2;padding:14px 0px">
+<p style="width:56px;font-size:40px;font-weight:900;color:#B4481A">2</p>
+<p style="width:760px;font-size:30px;font-weight:700;line-height:1.45">兩份檔案的標題列位置不同</p>
+<p style="flex:1;font-size:28px;line-height:1.45;color:#3F5450">清冊在第 5 列，交通車在第 1 列</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:baseline;border-top:1px solid #CFC6B2;padding:14px 0px">
+<p style="width:56px;font-size:40px;font-weight:900;color:#B4481A">3</p>
+<p style="width:760px;font-size:30px;font-weight:700;line-height:1.45">交通車資料沒有身分證號</p>
+<p style="flex:1;font-size:28px;line-height:1.45;color:#3F5450">只能用姓名比，同名同姓會被合併</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:baseline;border-top:1px solid #CFC6B2;border-bottom:1px solid #CFC6B2;padding:14px 0px">
+<p style="width:56px;font-size:40px;font-weight:900;color:#B4481A">4</p>
+<p style="width:760px;font-size:30px;font-weight:700;line-height:1.45">「搭乘狀況」這次全部是「完成」</p>
+<p style="flex:1;font-size:28px;line-height:1.45;color:#3F5450">若有取消的趟次，規則要再補一條</p>
+</div>
+</div>
+<p style="font-size:32px;font-weight:700;line-height:1.5;color:#FAF7F0;background:#1F3A36;border-radius:16px;padding:28px 40px">你寫的規則只涵蓋你想得到的情況。資料裡的意外，要請 AI 回報，再由你決定怎麼處理。</p>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#5C6B67">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#5C6B67">20 / 28</p></div>
+<aside>【時間】33:00–34:30（1 分 30 秒）
+【重點】
+・AI 動手前先把兩份資料讀過一遍，回報了四件我們在規則裡沒寫到的事。
+・第 1 件最關鍵：交通車系統的姓名後面多數帶「★」，清冊沒有。如果直接拿姓名去比，十個人會全部顯示「查無此人」。這跟案例一「積分是文字」是同一種坑：資料看起來一樣，其實不一樣。
+・第 2 件：清冊前面有四列表頭（案號、服務單位、版號），標題在第 5 列；交通車的標題在第 1 列。
+・第 3 件：交通車資料只有姓名，沒有身分證號。所以只能用姓名比對，遇到同名同姓的不同用戶會被合成一人，要人工確認。
+・第 4 件：這次 50 趟的搭乘狀況都是「完成」。但如果匯出檔會包含取消或未完成的趟次，就要補一條規則「只計完成」。
+・帶出觀念：這四件事裡，第 1、2 件 AI 可以自己處理；第 3、4 件是業務判斷，一定要由你決定。
+・可以教學員在起手式多加一句：「開始之前，先告訴我資料裡有什麼跟我說的不一樣的地方。」</aside>
+</section>
