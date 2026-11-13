@@ -1,52 +1,37 @@
 <section id="step-5b" data-transition="fade" style="background:#FAF7F0;color:#1F3A36;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
-<div style="display:flex;flex-direction:column;gap:12px">
-<div style="display:flex;flex-direction:row;gap:16px;align-items:center">
-<p style="font-size:24px;font-weight:700;color:#FAF7F0;background:#B4481A;padding:4px 20px;border-radius:40px">講師示範</p>
-<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#B4481A">案例一｜步驟 5 之二</p>
-</div>
-<h2 style="font-size:64px;font-weight:700;line-height:1.15">查到期日，加上提醒</h2>
-</div>
+<div style="display:flex;flex-direction:column;gap:12px"><div style="display:flex;flex-direction:row;gap:16px;align-items:center"><p style="font-size:24px;font-weight:700;color:#FAF7F0;background:#B4481A;padding:4px 20px;border-radius:40px">講師示範</p><p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#B4481A">案例一｜步驟 6｜規則 2</p></div><h2 style="font-size:64px;font-weight:700;line-height:1.15">採計總積分，距 120 點還缺多少</h2></div>
 <div style="display:flex;flex-direction:row;gap:48px">
-<div style="width:980px;display:flex;flex-direction:column;gap:16px">
-<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.6;background:#1F3A36;color:#F4EFE3;padding:16px 24px;border-radius:16px">「人員名冊」B 欄是身分證字號，D 欄是民國到期日，資料在第 4 到 303 列。<br>我想在人員總表 M6 用 C6 的身分證字號找到這個人的到期日，找不到就顯示「未登錄」。</p>
-<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.6;background:#1F3A36;color:#F4EFE3;padding:16px 24px;border-radius:16px">人員名冊 E 欄是西元到期日。我想在人員總表 N6 算出距離今天還剩幾天，<br>名冊找不到這個人就留空白，不要出現錯誤。</p>
-<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.6;background:#1F3A36;color:#F4EFE3;padding:16px 24px;border-radius:16px">人員總表 N6 是剩餘天數，N2 是提醒天數 180。<br>我想在 O6 顯示：N6 小於 0 是「已到期」，N2 天以內是「即將到期」，其他空白。N6 是空白時 O6 也空白。</p>
-<p style="font-size:26px;line-height:1.5;color:#5C6B67;background:#F0EBDD;border:3px dashed #B4481A;border-radius:16px;padding:14px 24px"><b>【公式待填】</b>人員總表 M6、N6、O6：實測後填入 AI 回覆的公式</p>
+<div style="width:900px;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:700;color:#1F6B5F">第一問：公式會很長，請 AI 先拆輔助欄</p>
+<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.55;background:#1F3A36;color:#F4EFE3;padding:20px 28px;border-radius:16px">人員總表 R6 要算「採計總積分」：這個人全部的有效積分，先扣掉品質倫理法規超過 36 點的部分，再扣掉網路課程超過 T6 上限的部分。<br>請先告訴我需要哪些輔助欄，一次給我一欄。<br>例如 Z900000001 應該是 69。</p>
+<p style="font-size:24px;font-weight:700;color:#1F6B5F">第二問：還缺幾點</p>
+<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.55;background:#1F3A36;color:#F4EFE3;padding:20px 28px;border-radius:16px">R6 是採計總積分。我想在 Q6 顯示距離 120 點還缺幾點，已經超過就顯示 0。</p>
+<p style="font-size:26px;line-height:1.5;color:#5C6B67;background:#F0EBDD;border:3px dashed #B4481A;border-radius:16px;padding:14px 24px"><b>【公式待填】</b>人員總表 R6、Q6 與輔助欄：實測後填入</p>
 </div>
-<div style="flex:1;display:flex;flex-direction:column;gap:20px">
-<div style="display:flex;flex-direction:column;gap:8px;background:#B4481A;border-radius:16px;padding:28px 36px">
-<p style="font-size:40px;font-weight:900;line-height:1.3;color:#FAF7F0">這就是 VLOOKUP。</p>
-<p style="font-size:30px;font-weight:700;line-height:1.4;color:#FAF7F0">是 AI 寫的，不是你背的。</p>
-</div>
-<div style="display:flex;flex-direction:column;gap:14px;background:#FFFDF8;border:1px solid #E2DACA;border-radius:16px;padding:28px 36px">
-<h3 style="font-size:32px;font-weight:700;line-height:1.2;color:#1F6B5F">驗算</h3>
-<div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:12px 0px 0px 0px">
-<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px">Z900000021</p>
-<p style="font-size:26px;font-weight:700">116/02/08　即將到期</p>
-</div>
-<div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:12px 0px 0px 0px">
-<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px">Z900000031</p>
-<p style="font-size:26px;font-weight:700">115/10/24　已到期</p>
-</div>
-<div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:12px 0px 0px 0px">
-<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px">Z900000005</p>
-<p style="font-size:26px;font-weight:700">未登錄</p>
-</div>
-</div>
-<p style="font-size:26px;line-height:1.5;color:#5C6B67">剩餘天數每天都會變，以開啟檔案當天為準。</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;background:#FFFDF8;border:1px solid #E2DACA;border-radius:16px;padding:28px 36px">
+<h3 style="font-size:32px;font-weight:700;line-height:1.25;color:#1F6B5F">驗算：Z900000001</h3>
+<div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:12px 0px 0px 0px"><p style="font-size:26px;line-height:1.4">全部有效積分</p><p style="font-size:28px;font-weight:700">109.53</p></div><div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:12px 0px 0px 0px"><p style="font-size:26px;line-height:1.4">品質倫理法規 70.57，只採計 36</p><p style="font-size:28px;font-weight:700">−34.57</p></div><div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:12px 0px 0px 0px"><p style="font-size:26px;line-height:1.4">剩下的網路課程 65.96，上限 60</p><p style="font-size:28px;font-weight:700">−5.96</p></div><div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:12px 0px 0px 0px"><p style="font-size:26px;line-height:1.4"><b>採計總積分</b></p><p style="font-size:34px;font-weight:900">69</p></div><div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:12px 0px 0px 0px"><p style="font-size:26px;line-height:1.4"><b>距 120 點尚缺</b></p><p style="font-size:34px;font-weight:900">51</p></div>
+<p style="font-size:26px;line-height:1.5;color:#5C6B67">全部加起來是 109.53，採計後只有 69。這是預估，最終以平台及主管機關審查為準。</p>
 </div>
 </div>
 <div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#5C6B67">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#5C6B67">15 / 28</p></div>
-<aside>【時間】25:15–27:00（1 分 45 秒，講師示範）
+<aside>【時間】24:30–27:00（2 分 30 秒，講師示範）
+【對應規則】規則 2：採計總積分達 120 點。同時用到規則 3 的 36 點上限與規則 5 的網路上限。
 【重點】
-・回到人員總表。三個提問連續做：M6 查到期日、N6 算剩餘天數、O6 顯示提醒。每條貼上後往下填滿。
-・拆解提問：
-　第一問講清楚「用哪一格去找」「去哪張表找」「找不到怎麼辦」。
-　第二問講清楚「找不到就留空白，不要出現錯誤」。
-　第三問把三種情況逐一列出，連「N6 是空白時」也交代。
-・全課金句，停一下再講：「大家剛剛看到的這條公式，就是 VLOOKUP。是 AI 寫的，不是你背的。」
-・補一句：如果 AI 給的是別的查找寫法也沒關係，重點是你說得出「用這個找那個」。
-・驗算：Z900000021 到期日 116/02/08、即將到期；Z900000031 到期日 115/10/24、已到期；Z900000005 名冊未登錄。
-・剩餘天數以開啟檔案當天計算，不要念出固定天數。
-【待辦】實測後填入 AI 實際回覆的公式；補人員總表 C5:O10 的結果截圖。若實測時 AI 沒有使用 VLOOKUP，橘色方塊的文字要跟著改。</aside>
+・這是最複雜的一步，由講師示範，學員看觀念就好。
+・先問學員：Z900000001 所有有效積分加起來是 109.53，離 120 只差 10 點多，對嗎？答案是不對。
+・帶著右邊的算式走一遍：
+　全部有效積分 109.53。
+　品質倫理法規修了 70.57，但最多只採計 36，所以扣掉 34.57。
+　扣完之後，網路課程還有 65.96，這位的上限是 60，所以再扣掉 5.96。
+　採計總積分是 69，距離 120 點還缺 51。
+・拆解第一問：規則一多，公式就會很長。這時不要硬要一條公式，而是請 AI 先說需要哪些輔助欄，再一欄一欄給。呼應起手式那句「寧可多幾欄，不要一條很長的公式」。
+・「例如 Z900000001 應該是 69」是這一步的保險。沒有這個已知答案，109.53 看起來也很合理。
+・第二問很單純：120 減掉採計總積分，超過就顯示 0。
+・另外兩位可以請學員自己對：Z900000002 採計總積分 35.28、尚缺 84.72；Z900000003 採計總積分 43.75、尚缺 76.25（這兩位沒有超過任何上限，所以等於全部加總）。
+・完整版檢查表還會把各項結果合成一格「換證預估結果」。示範資料的 42 列裡，36 列是「尚有待補項目」，另外 6 列因為人員名冊沒有登錄生效日而無法預估。
+【措辭規範】一律說「預估」，並說明最終以平台及主管機關審查為準。說「尚缺」「待補」，不說「不合格」「違規」。
+【已知限制】總積分採計匯出檔內全部符合的課程，不另外依效期篩選；匯出檔若含前一張證書期間的課，總分會高估。課堂版也不含文化課程的規則。
+【說明】驗算值取自示範資料版檢查表人員總表 Q、R、T、U、V 欄。「剩下的網路課程 65.96」是完整版扣除 36 點上限後的網路可採計點數。
+【待辦】實測後填入 AI 實際回覆的輔助欄與公式。這一步的提問尚未實測，AI 的拆法可能和完整版不同，以實測結果為準。</aside>
 </section>

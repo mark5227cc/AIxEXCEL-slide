@@ -58,7 +58,7 @@
       "start": "four-things"
     },
     "s3": {
-      "description": "案例一：年度積分與到期提醒，從規則、AI 規劃、五步實作到卡關與驗算。",
+      "description": "案例一：換證檢核表，從六條規則、AI 規劃、六步實作到卡關與驗算。",
       "start": "case1-task"
     },
     "s4": {
