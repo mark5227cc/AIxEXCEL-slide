@@ -44,7 +44,6 @@
     "case2-verify",
     "locate",
     "locate-choose",
-    "summary",
     "more-uses",
     "recap"
   ],
@@ -66,8 +65,9 @@
       "start": "case2"
     },
     "s5": {
+      "before": null,
       "description": "延伸與收尾：請 AI 寫摘要、同一招的其他用途、流程回顧與贈品。",
-      "start": "summary"
+      "start": "more-uses"
     }
   },
   "title": "Excel × AI 長照行政課程簡報"
