@@ -52,7 +52,8 @@ html, body {{ margin:0; height:100%; background:var(--bg); color:var(--fg);
 #stage section ul {{ padding-left:1.2em; list-style:disc; }}
 #stage section table {{ border-collapse:collapse; width:100%; }}
 #stage section th, #stage section td {{ padding:14px 20px; border-bottom:1px solid #CFC6B2; vertical-align:top; }}
-#stage section img {{ display:block; }}
+#stage section img {{ display:block; object-fit:cover; }}
+#stage section .crop-frame {{ overflow:hidden; display:block; }}
 #stage section aside {{ display:none; }}
 #bar {{ position:fixed; left:0; right:0; bottom:0; height:48px; display:flex; align-items:center;
   gap:12px; padding:0 16px; font-size:15px; color:var(--muted); background:#0d1312; }}
@@ -91,11 +92,24 @@ body.show-notes #notes {{ display:block; }}
   var bar = document.querySelector('#progress > div');
   var i = 0;
 
-  // data-crop="縮放 x% y%"：照編輯器的裁切方式顯示
+  // data-crop="縮放 x% y%"：照簡報編輯器的畫法。外框沿用圖片原本的位置與大小並裁掉超出部分，
+  // 圖片本身放大 zoom 倍，以 cover 填滿，位置由 x、y 決定。
   stage.querySelectorAll('img[data-crop]').forEach(function (img) {{
-    var p = img.getAttribute('data-crop').split(/\\s+/);
-    img.style.objectFit = 'cover';
-    if (p.length >= 3) img.style.objectPosition = p[1] + ' ' + p[2];
+    var m = /^([\\d.]+)\\s+([\\d.]+)%\\s+([\\d.]+)%$/.exec(img.getAttribute('data-crop').trim());
+    if (!m || img.style.objectFit === 'contain') return;
+    var z = Math.min(50, Math.max(1, +m[1])), x = Math.min(100, Math.max(0, +m[2])) / 100,
+        y = Math.min(100, Math.max(0, +m[3])) / 100;
+    if (z === 1) {{ img.style.objectFit = 'cover'; img.style.objectPosition = m[2] + '% ' + m[3] + '%'; return; }}
+    var frame = document.createElement('div');
+    frame.className = 'crop-frame';
+    frame.setAttribute('style', img.getAttribute('style'));
+    frame.style.position = img.style.position || 'relative';
+    img.parentNode.insertBefore(frame, img);
+    frame.appendChild(img);
+    var pct = function (v) {{ return (v * 100) + '%'; }};
+    img.setAttribute('style', 'position:absolute;max-width:none;max-height:none;object-fit:cover;' +
+      'width:' + pct(z) + ';height:' + pct(z) + ';left:' + pct(-(z - 1) * x) + ';top:' + pct(-(z - 1) * y) +
+      ';object-position:' + pct(x) + ' ' + pct(y));
   }});
 
   function fit() {{
