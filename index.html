@@ -1,0 +1,1056 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Excel × AI 長照行政課程簡報</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+Mono+TC:wght@400;500;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+:root { --bg:#141c1a; --fg:#e8efed; --muted:#9fb3ae; --accent:#F2B83B; }
+html, body { margin:0; height:100%; background:var(--bg); color:var(--fg);
+  font-family:'Noto Sans TC', Arial, sans-serif; overflow:hidden; }
+#viewport { position:fixed; inset:0 0 48px 0; display:flex; align-items:center; justify-content:center; }
+#stage { position:relative; width:1920px; height:1080px; transform-origin:center center;
+  box-shadow:0 10px 40px rgba(0,0,0,.45); overflow:hidden; background:#FAF7F0; }
+#stage > section { position:absolute; inset:0; width:1920px; height:1080px; box-sizing:border-box;
+  display:none !important; overflow:hidden; color:#1F3A36; }
+#stage > section.active { display:flex !important; }
+#stage section * { margin:0; box-sizing:border-box; }
+#stage section ul { padding-left:1.2em; list-style:disc; }
+#stage section table { border-collapse:collapse; width:100%; }
+#stage section th, #stage section td { padding:14px 20px; border-bottom:1px solid #CFC6B2; vertical-align:top; }
+#stage section img { display:block; }
+#stage section aside { display:none; }
+#bar { position:fixed; left:0; right:0; bottom:0; height:48px; display:flex; align-items:center;
+  gap:12px; padding:0 16px; font-size:15px; color:var(--muted); background:#0d1312; }
+#bar button { background:#22302d; color:var(--fg); border:0; border-radius:6px; padding:6px 12px;
+  font:inherit; cursor:pointer; }
+#bar button:hover { background:#2e403c; }
+#count { min-width:72px; text-align:center; color:var(--fg); }
+#progress { flex:1; height:4px; background:#22302d; border-radius:2px; overflow:hidden; }
+#progress > div { height:100%; background:var(--accent); width:0; transition:width .2s; }
+#notes { position:fixed; right:16px; bottom:60px; width:min(560px, calc(100% - 32px)); max-height:45vh;
+  overflow:auto; background:#0d1312; color:var(--fg); border:1px solid #2e403c; border-radius:10px;
+  padding:16px 18px; font-size:15px; line-height:1.7; white-space:pre-wrap; display:none; }
+body.show-notes #notes { display:block; }
+@media (max-width: 600px) { #bar .hide-sm { display:none; } }
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+<section id="cover" data-transition="fade" style="display:flex; flex-direction:column; justify-content:space-between; padding:128px; background:#1f3a36">
+  <div style="display:flex; flex-direction:column; gap:32px">
+    <h1 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:120px; font-weight:900; line-height:1.15; color:#faf7f0">Excel × AI<br>長照行政課程</h1>
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:40px; font-weight:500; line-height:1.5; color:#cfe0db">不用背函數，把資料和規則講清楚，<br>AI 寫公式，你負責驗算。</p>
+  </div>
+  <div style="display:flex; flex-direction:row; gap:64px">
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:28px; color:#cfe0db">講師｜<b>裕祥</b></p>
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:28px; color:#cfe0db">日期｜<b>2026/11/26</b></p>
+  </div>
+  <aside>【時間】0:00–0:30（30 秒） 【重點】 ・自我介紹一句話即可，不講經歷。 ・直接念出主張：「今天不教大家背函數。你把資料和規則講清楚，AI 寫公式，你負責驗算。」 ・提醒學員打開練習檔（去識別化示範資料版）與免費版 ChatGPT 或 Gemini。 【待填】正式課程名稱、講師、日期、地點、報名方式。</aside>
+</section>
+<section id="scene" data-transition="fade" style="background:#FAF7F0;color:#1F3A36;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#B4481A">情境</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">年底的那個任務</h2>
+</div>
+<p style="font-size:64px;font-weight:700;line-height:1.45;color:#1F3A36;border-left:12px solid #B4481A;padding:0px 0px 0px 48px">「年底要盤點全機構積分，<br>主管還問我：誰換證會有問題？」</p>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFDF8;border:1px solid #E2DACA;border-radius:16px;padding:32px 40px">
+<h3 style="font-size:36px;font-weight:700;line-height:1.2">例行報表</h3>
+<p style="font-size:28px;line-height:1.5;color:#3F5450">早有固定的樞紐與公式可以沿用，<br>大家都說不難。</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#1F3A36;border-radius:16px;padding:32px 40px">
+<h3 style="font-size:36px;font-weight:700;line-height:1.2;color:#F2B83B">偶爾才做的比對與盤點</h3>
+<p style="font-size:28px;line-height:1.5;color:#F4EFE3">每次都要重來，範本管不到。<br>今天就處理這一塊。</p>
+</div>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#5C6B67">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#5C6B67">02 / 28</p></div>
+<aside>【時間】0:30–1:30（1 分鐘）
+【重點】
+・用提問開場：「年底主管叫你盤點全機構的積分，還問誰換證會有問題，你會怎麼做？」請一兩位學員回答。
+・承認現況：例行報表早就有樞紐和公式可以沿用，所以大家覺得 Excel 不難。
+・點出痛點：真正花時間的是「範本管不到的地方」，偶爾才做、每次都要重來的比對與盤點。
+・轉場：今天就用這個情境，示範怎麼請 AI 幫你寫公式。</aside>
+</section>
+<section id="takeaway" data-transition="fade" style="background:#FAF7F0;color:#1F3A36;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#B4481A">課程目標</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">今天帶走什麼</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFDF8;border:1px solid #E2DACA;border-radius:16px;padding:40px">
+<p style="font-size:112px;font-weight:900;line-height:1.1;color:#B4481A">1</p>
+<h3 style="font-size:40px;font-weight:700;line-height:1.2">一套流程</h3>
+<p style="font-size:28px;line-height:1.5;color:#3F5450">交代清楚、一次做一步、驗算修正。換一份資料也能照做。</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFDF8;border:1px solid #E2DACA;border-radius:16px;padding:40px">
+<p style="font-size:112px;font-weight:900;line-height:1.1;color:#B4481A">2</p>
+<h3 style="font-size:40px;font-weight:700;line-height:1.2">兩個案例</h3>
+<p style="font-size:28px;line-height:1.5;color:#3F5450">年度積分與到期提醒；交通車趟次核銷比對。</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFDF8;border:1px solid #E2DACA;border-radius:16px;padding:40px">
+<p style="font-size:112px;font-weight:900;line-height:1.1;color:#B4481A">1</p>
+<h3 style="font-size:40px;font-weight:700;line-height:1.2">一份完整版檢查表</h3>
+<p style="font-size:28px;line-height:1.5;color:#3F5450">課後贈品。空白版貼上自己的資料就能用。</p>
+</div>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#5C6B67">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#5C6B67">03 / 28</p></div>
+<aside>【時間】1:30–2:00（30 秒）
+【重點】
+・三樣東西快速帶過，不展開。
+・流程：三步驟會貫穿整堂課，最後一張會再回顧一次。
+・案例：兩個都是「查找與加總」，學會一個就能舉一反三。
+・贈品：完整版檢查表課後提供，課堂上不教怎麼做，只展示成果。</aside>
+</section>
+<section id="result" data-transition="fade" style="background:#faf7f0">
+  <div id="e1-2u1uec" style="position:absolute; right:128px; bottom:64px; left:128px; display:flex; flex-direction:row; justify-content:space-between">
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#5c6b67">Excel × AI 長照行政課程</p>
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#5c6b67">04 / 28</p>
+  </div>
+  <div id="p94c6c5263ff4r0-499a1a82" style="position:absolute; top:128px; left:128px; width:1664px; height:120px; display:flex; flex-direction:column; gap:12px">
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; letter-spacing:2px; color:#b4481a">成果展示</p>
+    <h2 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:64px; font-weight:700; line-height:1.15; color:#1f3a36">先看成果：人員總表</h2>
+  </div>
+  <div id="p94c6c5263ff4r1-499a1a82" style="position:absolute; top:287px; left:128px; width:1664px; display:flex; flex-direction:row; gap:48px">
+    <div style="width:520px; display:flex; flex-direction:column; gap:28px">
+      <div style="display:flex; flex-direction:row; gap:20px; align-items:start">
+        <div style="width:40px; height:40px; display:flex; flex-direction:column; background:#b93a2b; border-radius:8px">
+        </div>
+        <div style="display:flex; flex-direction:column; gap:4px; flex:1">
+          <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:32px; font-weight:700; line-height:1.25; color:#1f3a36">紅色：年度進度落後</h3>
+          <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.5; color:#3f5450">今年積分未達機構自訂的進度參考</p>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:20px; align-items:start">
+        <div style="width:40px; height:40px; display:flex; flex-direction:column; background:#f2c94c; border-radius:8px">
+        </div>
+        <div style="display:flex; flex-direction:column; gap:4px; flex:1">
+          <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:32px; font-weight:700; line-height:1.25; color:#1f3a36">黃色：即將到期</h3>
+          <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.5; color:#3f5450">認證 180 天內到期，該提醒了</p>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:20px; align-items:start">
+        <div style="width:40px; height:40px; display:flex; flex-direction:column; background:#1f6b5f; border-radius:8px">
+        </div>
+        <div style="display:flex; flex-direction:column; gap:4px; flex:1">
+          <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:32px; font-weight:700; line-height:1.25; color:#1f3a36">右側：換證預估</h3>
+          <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.5; color:#3f5450">今天只看結果</p>
+        </div>
+      </div>
+      <p style="padding:20px 0 0; font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.5; color:#5c6b67; border-top:1px solid #cfc6b2">換證預估僅供參考，最終以平台及主管機關審查為準。</p>
+    </div>
+    <img src="簡報原始檔/assets/6a9986e3f35e4587e67d1d62473abea3.png" alt="螢幕擷取畫面 2026-11-12 105013.png" data-crop="1 50.96% 50%" style="width:1093px; height:592px">
+  </div>
+  <aside>【時間】2:00–3:00（1 分鐘） 【重點】 ・切到 Excel，打開示範資料版的人員總表，實際捲動給學員看。 ・紅色是年度進度落後：這裡的「未達標」是指未達機構自訂的進度參考（平均一年約 20 點），不是法規的逐年要求。 ・黃色是即將到期：180 天內到期的人，該提醒了。 ・右側換證預估：是附贈的完成品，一律說「預估」，並說明最終以平台及主管機關審查為準。 ・收尾一句：「這張表裡的公式，沒有一條是我自己背出來的。」 【注意】不可說「每年須修滿 20 點」「不合格」「違規」。 【待辦】截圖只能用去識別化示範資料。</aside>
+</section>
+<section id="four-things" data-transition="fade" style="background:#FAF7F0;color:#1F3A36;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#B4481A">與 AI 協作</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">這張表靠四樣東西做出來</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFDF8;border:1px solid #E2DACA;border-radius:16px;padding:32px">
+<p style="font-size:24px;font-weight:700;color:#B4481A">01</p>
+<h3 style="font-size:44px;font-weight:700;line-height:1.2">資料</h3>
+<p style="font-size:28px;line-height:1.5;color:#3F5450">一份去識別化的資料</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFDF8;border:1px solid #E2DACA;border-radius:16px;padding:32px">
+<p style="font-size:24px;font-weight:700;color:#B4481A">02</p>
+<h3 style="font-size:44px;font-weight:700;line-height:1.2">規則</h3>
+<p style="font-size:28px;line-height:1.5;color:#3F5450">一套白話規則，一行一條</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFDF8;border:1px solid #E2DACA;border-radius:16px;padding:32px">
+<p style="font-size:24px;font-weight:700;color:#B4481A">03</p>
+<h3 style="font-size:44px;font-weight:700;line-height:1.2">合作方式</h3>
+<p style="font-size:28px;line-height:1.5;color:#3F5450">一次一步，給公式讓我自己貼，等我說好了再繼續</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFDF8;border:1px solid #E2DACA;border-radius:16px;padding:32px">
+<p style="font-size:24px;font-weight:700;color:#B4481A">04</p>
+<h3 style="font-size:44px;font-weight:700;line-height:1.2">已知答案</h3>
+<p style="font-size:28px;line-height:1.5;color:#3F5450">一兩個自己算得出來的結果，用來驗算</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center;background:#1F3A36;border-radius:16px;padding:32px 40px">
+<p style="font-size:28px;font-weight:700;color:#F2B83B">三步流程</p>
+<p style="font-size:32px;font-weight:700;color:#FAF7F0">① 交代清楚</p>
+<p style="font-size:32px;color:#A9BDB8">→</p>
+<p style="font-size:32px;font-weight:700;color:#FAF7F0">② 一次做一步</p>
+<p style="font-size:32px;color:#A9BDB8">→</p>
+<p style="font-size:32px;font-weight:700;color:#FAF7F0">③ 驗算修正</p>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#5C6B67">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#5C6B67">05 / 28</p></div>
+<aside>【時間】3:00–5:00（2 分鐘）
+【重點】
+・主張再說一次：不用背函數，把資料和規則講清楚，AI 寫公式，你負責驗算。
+・資料：給 AI 看的一定是去識別化的版本（下一張細講）。
+・規則：用白話寫，一行一條。寫不出規則，AI 也寫不出公式。
+・合作方式：一次一步、給公式讓我自己貼、等我說好了再繼續。這是避免 AI 一次丟一大串的關鍵。
+・已知答案：先挑一兩位自己手算得出來的同仁，之後用來驗算。
+・三步流程：交代清楚（前三樣）、一次做一步、驗算修正（第四樣）。</aside>
+</section>
+<section id="privacy" data-transition="fade" style="background:#FAF7F0;color:#1F3A36;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#B4481A">個資原則</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">AI 只看去識別化的資料</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#FFFDF8;border:1px solid #E2DACA;border-top:12px solid #1F6B5F;border-radius:16px;padding:36px 40px">
+<h3 style="font-size:40px;font-weight:700;line-height:1.2;color:#1F6B5F">可以給 AI</h3>
+<ul style="font-size:30px;line-height:1.6;color:#1F3A36">
+<li>欄位名稱與資料格式</li>
+<li>虛構的示範資料（姓名中間字以 O 遮蔽、Z9 開頭的虛構編號）</li>
+<li>白話寫成的規則</li>
+</ul>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#FFFDF8;border:1px solid #E2DACA;border-top:12px solid #B93A2B;border-radius:16px;padding:36px 40px">
+<h3 style="font-size:40px;font-weight:700;line-height:1.2;color:#A53225">不給 AI</h3>
+<ul style="font-size:30px;line-height:1.6;color:#1F3A36">
+<li>真實姓名、身分證字號</li>
+<li>含真實個資的檔案</li>
+<li>拍到真實個資的截圖</li>
+</ul>
+</div>
+</div>
+<p style="font-size:32px;font-weight:700;line-height:1.5;color:#FAF7F0;background:#1F3A36;border-radius:16px;padding:28px 40px">真實資料最後才貼進自己的 Excel。公式在你的電腦裡算，資料不必離開機構。</p>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#5C6B67">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#5C6B67">06 / 28</p></div>
+<aside>【時間】5:00–7:00（2 分鐘）
+【重點】
+・這是整堂課唯一的硬規定：給 AI 的只能是去識別化資料。
+・AI 寫公式不需要真實資料，只需要知道「欄位長什麼樣子」。給三五列虛構範例就夠。
+・示範做法：練習檔的姓名中間字用 O 遮蔽，身分證字號是 Z9 開頭的虛構編號。
+・流程順序：用示範資料把公式做好、驗算完，最後才把真實資料貼進自己電腦裡的 Excel。
+・截圖也算：之後卡關貼截圖給 AI 時，畫面上同樣不能出現真實個資。</aside>
+</section>
+<section id="opener" data-transition="fade" style="background:#faf7f0">
+  <div id="e1-1puvr0i" style="position:absolute; right:128px; bottom:64px; left:128px; display:flex; flex-direction:row; justify-content:space-between">
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#5c6b67">Excel × AI 長照行政課程</p>
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#5c6b67">07 / 28</p>
+  </div>
+  <div id="pee47f9032429r0-f6751363" style="position:absolute; top:128px; left:128px; width:1664px; height:120px; display:flex; flex-direction:column; gap:12px">
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; letter-spacing:2px; color:#b4481a">起手式</p>
+    <h2 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:64px; font-weight:700; line-height:1.15; color:#1f3a36">第一則訊息的五個區塊</h2>
+  </div>
+  <p id="pee47f9032429r1_1_0-f6751363" style="position:absolute; top:795.68px; left:320px; width:708px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:51px; font-weight:700; text-align:right; color:#1f6b5f">「合作方式」可以照這樣打👉</p>
+  <div id="pb99065891ea8c0-e276b506" style="position:absolute; top:287px; left:128px; width:900px; height:414px; display:flex; flex-direction:column">
+    <div style="display:flex; flex-direction:row; gap:24px; align-items:baseline; padding:18px 0; border-top:1px solid #cfc6b2">
+      <p style="width:48px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:28px; font-weight:700; color:#b4481a">1</p>
+      <p style="width:176px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:32px; font-weight:700; color:#1f3a36">成果</p>
+      <p style="flex:1; font-family:'Noto Sans TC', Arial, sans-serif; font-size:28px; line-height:1.45; color:#3f5450">我最後想得到一張什麼樣的表</p>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:24px; align-items:baseline; padding:18px 0; border-top:1px solid #cfc6b2">
+      <p style="width:48px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:28px; font-weight:700; color:#b4481a">2</p>
+      <p style="width:176px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:32px; font-weight:700; color:#1f3a36">資料</p>
+      <p style="flex:1; font-family:'Noto Sans TC', Arial, sans-serif; font-size:28px; line-height:1.45; color:#3f5450">哪張工作表、哪一欄是什麼、內容長什麼樣子</p>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:24px; align-items:baseline; padding:18px 0; border-top:1px solid #cfc6b2">
+      <p style="width:48px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:28px; font-weight:700; color:#b4481a">3</p>
+      <p style="width:176px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:32px; font-weight:700; color:#1f3a36">規則</p>
+      <p style="flex:1; font-family:'Noto Sans TC', Arial, sans-serif; font-size:28px; line-height:1.45; color:#3f5450">白話條列，一行一條</p>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:24px; align-items:baseline; padding:18px 0; border-top:1px solid #cfc6b2; border-bottom:1px solid #cfc6b2">
+      <p style="width:48px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:28px; font-weight:700; color:#b4481a">4</p>
+      <p style="width:176px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:32px; font-weight:700; color:#1f3a36">第一件事</p>
+      <p style="flex:1; font-family:'Noto Sans TC', Arial, sans-serif; font-size:28px; line-height:1.45; color:#3f5450">先給我規劃，我確認後再開始</p>
+    </div>
+  </div>
+  <p id="pb99065891ea8c1_0-e276b506" style="position:absolute; top:40.87px; left:1084px; width:708px; height:1036.77px; padding:32px 36px; font-family:'LXGW WenKai Mono TC', 'Courier New', monospace; font-size:28px; line-height:1.65; color:#f4efe3; background:#1f3a36; border-radius:16px">我要在 Excel 做一張「換證檢核」表，請你一步一步帶我完成。<br><br># 我要的成果<br>- 我把平台匯出的積分表貼進「貼上區」工作表，檢核結果就自動更新。<br>- 請給我公式讓我自己貼，不要直接幫我算出結果。<br>- 我用舊版 Excel，不要用 XLOOKUP、FILTER、LET、UNIQUE。<br>- 可以用輔助欄，寧可多幾欄，不要一條很長的公式。<br><br># 資料（附檔為去識別化資料）<br>- 「貼上區」資料從第 4 列開始：E 身分證字號、G 課程日期、<br>&nbsp;&nbsp;I 實施方式、K 課程屬性、L 課程類別、M 積分、N 認可狀態<br>- 課程日期是民國年文字，積分也是文字，例如 0.50<br>- 「人員名冊」：B 身分證字號、C 認證生效日（例如 112/09/01）<br><br># 換證規則（節錄）<br>- 只算認可狀態為「符合」且積分大於 0 的課，課程日期取起日<br>- 採計總積分達 120 點<br>- 品質＋倫理＋法規合計至少 24 點，超過 36 點只採計 36 點<br>- 四大核心各至少 1 點，且合計至少 10 點<br>- 網路課程依認證生效日有採計上限<br>- 到期日＝生效日加 6 年減 1 天<br>（其餘規則同樣一行一條列在這裡）<br><br># 第一件事<br>先不要給公式。請列出你打算怎麼做：需要哪些工作表、哪些輔助欄、分成幾個步驟。我確認後再開始。</p>
+  <aside>【時間】7:00–10:00（3 分鐘） 【重點】 ・第一則訊息決定後面順不順。五個區塊逐一說明，各舉案例一的例子： 　1 成果：一張人員總表，每人一列，有今年積分、尚缺、到期提醒。 　2 合作方式：右邊這段可以直接照打。重點是「舊版函數」「一次一條」「說明一句話」。 　3 資料：工作表名稱、欄位代號、內容範例（例如課程日期是民國年文字）。 　4 規則：下一段案例一的五條規則。 　5 第一件事：請 AI 先給規劃，不要一開始就丟公式。 ・拆解思考過程：為什麼要講「舊版」？因為 AI 預設會用 XLOOKUP、FILTER，舊版 Excel 貼上去會出錯。 ・為什麼要講「資料從第 4 列開始」？因為 AI 預設資料從第 2 列開始。 ・下一張先看平台匯出的原始報表，再開始講怎麼跟 AI 討論。</aside>
+</section>
+<section id="case1-task" data-transition="fade" style="background:#faf7f0">
+  <div id="e1-22xtr2" style="position:absolute; right:128px; bottom:64px; left:128px; display:flex; flex-direction:row; justify-content:space-between">
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#5c6b67">Excel × AI 長照行政課程</p>
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#5c6b67">08 / 28</p>
+  </div>
+  <div id="p3f90d7823c04r0-d8736057" style="position:absolute; top:128px; left:128px; width:1664px; height:95px; display:flex; flex-direction:column; gap:12px">
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; letter-spacing:2px; color:#b4481a">案例一｜原始報表</p>
+    <h2 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:64px; font-weight:700; line-height:1.15; color:#1f3a36">先看平台匯出的原始報表</h2>
+  </div>
+  <img src="簡報原始檔/assets/0d024e1ff788d8cd9596b8d4584bda49.png" alt="image.png" id="p3f90d7823c04r1_0_0-d8736057" data-crop="1 96.612% 50%" style="position:absolute; top:262px; left:128px; width:1031.99px; height:612.32px">
+  <p id="p3f90d7823c04r1_0_2-d8736057" style="position:absolute; top:890px; left:128px; width:1032px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.5; color:#5c6b67">另一份是各單位自建的「人員名冊」：姓名、身分證字號、認證生效日。</p>
+  <div id="p3f90d7823c04r1_1-d8736057" style="position:absolute; top:262px; left:1192px; width:601px; height:658px; display:flex; flex-direction:column; gap:20px">
+    <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.2; color:#1f6b5f">原始報表的四個特點</h3>
+    <div style="display:flex; flex-direction:column">
+      <div style="display:flex; flex-direction:row; gap:20px; align-items:baseline; padding:12px 0; border-top:1px solid #cfc6b2">
+        <p style="width:32px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:30px; font-weight:900; color:#b4481a">1</p>
+        <p style="flex:1; font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.45; color:#1f3a36">一堂課一列，同一個人有很多列</p>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:20px; align-items:baseline; padding:12px 0; border-top:1px solid #cfc6b2">
+        <p style="width:32px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:30px; font-weight:900; color:#b4481a">2</p>
+        <p style="flex:1; font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.45; color:#1f3a36">第 3 列是標題，資料從第 4 列開始</p>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:20px; align-items:baseline; padding:12px 0; border-top:1px solid #cfc6b2">
+        <p style="width:32px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:30px; font-weight:900; color:#b4481a">3</p>
+        <p style="flex:1; font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.45; color:#1f3a36">課程日期是民國年文字，而且是一段區間</p>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:20px; align-items:baseline; padding:12px 0; border-top:1px solid #cfc6b2; border-bottom:1px solid #cfc6b2">
+        <p style="width:32px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:30px; font-weight:900; color:#b4481a">4</p>
+        <p style="flex:1; font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.45; color:#1f3a36">積分看起來是數字，其實是文字；認可狀態不一定是「符合」</p>
+      </div>
+    </div>
+    <p style="padding:20px 28px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.5; color:#f4efe3; background:#1f3a36; border-radius:16px"><b>要變成：</b>第 4 張的人員總表，一人一列。</p>
+  </div>
+  <aside>【時間】10:00–11:30（1 分 30 秒） 【重點】 ・進入案例一。先讓大家看清楚「手上拿到的資料長什麼樣」，再開始講怎麼跟 AI 討論。 ・指著截圖逐一講四個特點： 　1 一堂課一列：同一個人修了 30 堂課就有 30 列，要整理成一人一列才看得出誰缺什麼。 　2 第 3 列是標題、資料從第 4 列開始：AI 預設資料從第 2 列開始，不講它就會算錯位置。 　3 課程日期是民國年文字，例如 112/09/01 00:00:00~112/09/30 23:59:00：Excel 不認得，要先轉成日期。 　4 積分是文字，例如 0.50；認可狀態有「符合」也有其他：直接加總會得到 0，也會把不該算的課算進去。 ・重要欄位：E 身分證字號、G 課程日期、I 實施方式、K 課程屬性、L 課程類別、M 積分、N 認可狀態。 ・收在一句話：這四個特點，就是起手式「# 資料」那段要寫給 AI 的東西。你看得出資料的毛病，AI 才幫得上忙。 ・目標回扣第 4 張的人員總表：採計總積分距 120 點還缺多少、品質倫理法規和四大核心夠不夠、認證到期日與網路課程上限。 【措辭規範】一律說「預估」「檢核」，不說「判斷換證資格」「確認可否換證」。至少說一次「最終以平台及主管機關審查為準」。 【待辦】放上平台匯出積分表的原樣截圖（去識別化示範資料，貼上區第 1 到 10 列、A 到 N 欄），最好圈出 G、M、N 三欄。</aside>
+</section>
+<section id="case1-rules" data-transition="fade" style="background:#FAF7F0;color:#1F3A36;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px"><p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#B4481A">案例一｜規則</p><h2 style="font-size:64px;font-weight:700;line-height:1.15">白話寫成的六條換證規則</h2></div>
+<div style="display:flex;flex-direction:column;gap:0px">
+<div style="display:flex;flex-direction:row;gap:32px;align-items:baseline;border-top:1px solid #CFC6B2;padding:12px 0px"><p style="width:56px;font-size:40px;font-weight:900;color:#B4481A">1</p><p style="flex:1;font-size:32px;line-height:1.4">只算認可狀態<b>「符合」</b>且積分大於 0 的課；課程日期取<b>起日</b>。</p></div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:baseline;border-top:1px solid #CFC6B2;padding:12px 0px"><p style="width:56px;font-size:40px;font-weight:900;color:#B4481A">2</p><p style="flex:1;font-size:32px;line-height:1.4">採計總積分要達 <b>120 點</b>。</p></div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:baseline;border-top:1px solid #CFC6B2;padding:12px 0px"><p style="width:56px;font-size:40px;font-weight:900;color:#B4481A">3</p><p style="flex:1;font-size:32px;line-height:1.4">品質＋倫理＋法規合計<b>至少 24 點</b>；超過 36 點只採計 36 點。</p></div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:baseline;border-top:1px solid #CFC6B2;padding:12px 0px"><p style="width:56px;font-size:40px;font-weight:900;color:#B4481A">4</p><p style="flex:1;font-size:32px;line-height:1.4">四大核心（消防安全、緊急應變、感染管制、性別敏感度）<b>各至少 1 點</b>，合計至少 10 點。</p></div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:baseline;border-top:1px solid #CFC6B2;padding:12px 0px"><p style="width:56px;font-size:40px;font-weight:900;color:#B4481A">5</p><p style="flex:1;font-size:32px;line-height:1.4">網路課程有採計上限，依認證生效日是 60、40 或 80 點。</p></div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:baseline;border-top:1px solid #CFC6B2;border-bottom:1px solid #CFC6B2;padding:12px 0px"><p style="width:56px;font-size:40px;font-weight:900;color:#B4481A">6</p><p style="flex:1;font-size:32px;line-height:1.4">認證到期日＝生效日<b>加 6 年減 1 天</b>。</p></div>
+</div>
+<p style="font-size:26px;line-height:1.5;color:#5C6B67">這六條就是起手式「# 換證規則」那一段。課堂版先不處理文化課程，完整規則放在課後的完整版檢查表。</p>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#5C6B67">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#5C6B67">09 / 28</p></div>
+<aside>【時間】11:30–13:30（2 分鐘）
+【重點】
+・六條規則逐條念過，強調「這就是承辦人腦袋裡在做的事，只是寫下來」。每一條都對得上起手式「# 換證規則」的一行。
+・規則 1 是資料整理：只算「符合」且有積分的課，日期取起日。後面每一條都建立在這一條上。
+・規則 2 是總目標：採計總積分 120 點。注意是「採計」，不是把積分全部加起來，因為規則 3、5 有上限。
+・規則 3：品質、倫理、法規三種課合計至少 24 點，但最多只採計 36 點。
+・規則 4：四大核心各至少 1 點，而且合計至少 10 點。兩個條件都要過。
+・規則 5：網路課程的採計上限依認證生效日而定：112/10/12（含）以前 60 點；112/10/13 到 115/06/30 是 40 點；115/07/01 起 80 點。
+・規則 6：依《長期照顧服務人員訓練認證繼續教育及登錄辦法》，認證有效期間六年，所以到期日是生效日加 6 年減 1 天。
+・點出寫規則的訣竅：一行一條、每條只講一件事、有上限或例外就另外寫清楚。
+・接下來每一個步驟，都是把其中一條規則拿去問 AI。
+【措辭規範】檢核結果一律說「預估」，最終以平台及主管機關審查為準。
+【注意】24、36、四大核心 10 點、網路上限等細項數字來自工具實作，對外引用前須以現行規定確認。課堂版不含舊制與新制文化課程的規則。</aside>
+</section>
+<section id="ai-plan" data-transition="fade" style="background:#faf7f0">
+  <div id="e1-13t3yyl" style="position:absolute; right:128px; bottom:64px; left:128px; display:flex; flex-direction:row; justify-content:space-between">
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#5c6b67">Excel × AI 長照行政課程</p>
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#5c6b67">10 / 28</p>
+  </div>
+  <div id="p760feb4c39d2r0-d1055e72" style="position:absolute; top:128px; left:128px; width:1664px; height:120px; display:flex; flex-direction:column; gap:12px">
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; letter-spacing:2px; color:#b4481a">案例一｜一次做一步</p>
+    <h2 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:64px; font-weight:700; line-height:1.15; color:#1f3a36">AI 先給規劃，你先看過</h2>
+  </div>
+  <div id="p760feb4c39d2r1-d1055e72" style="position:absolute; top:287px; left:128px; width:1664px; display:flex; flex-direction:row; gap:48px">
+    <img src="簡報原始檔/assets/e685db240e03e7fab28093682724700b.png" alt="image.png" style="width:983px; height:602px">
+    <div style="width:600px; display:flex; flex-direction:column; gap:24px">
+      <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.2; color:#1f3a36">看規劃時確認</h3>
+      <ul style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:28px; line-height:1.6; color:#3f5450">
+        <li>步驟順序跟你的規則對得上</li>
+        <li>沒有用到舊版沒有的函數</li>
+        <li>是一步一步來，不是一次全給</li>
+      </ul>
+      <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; color:#1f6b5f">沒問題就回這一句</p>
+      <p style="padding:28px 32px; font-family:'LXGW WenKai Mono TC', 'Courier New', monospace; font-size:30px; line-height:1.6; color:#f4efe3; background:#1f3a36; border-radius:16px">規劃可以，請從第一步開始。</p>
+    </div>
+  </div>
+  <aside>【時間】13:30–15:00（1 分 30 秒） 【重點】 ・用左邊的截圖說明：把第 7 張的起手式送出後，AI 回覆的是「規劃」而不是一大串公式。 ・帶學員讀規劃：步驟順序是否對得上六條規則；有沒有冒出 XLOOKUP、FILTER；是不是一次一步。 ・規劃有問題就直接講哪裡不對，請它改；沒問題就回「規劃可以，請從第一步開始」。 ・強調：這一步只花 30 秒，卻能避免後面整串重來。 【待辦】實測後放上 AI 實際回覆的規劃截圖。不要自行編寫 AI 的回覆內容。</aside>
+</section>
+<section id="step-1-2" data-transition="fade" style="display:flex; flex-direction:column; gap:32px; padding:128px 128px 160px; background:#faf7f0">
+  <div style="display:flex; flex-direction:column; gap:12px">
+    <div style="display:flex; flex-direction:row; gap:16px; align-items:center">
+      <p style="padding:4px 20px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; color:#faf7f0; background:#b4481a; border-radius:40px">討論示範</p>
+      <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; letter-spacing:2px; color:#b4481a">案例一｜步驟 1、2｜規則 1</p>
+    </div>
+    <h2 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:64px; font-weight:700; line-height:1.15; color:#1f3a36">先把資料整理乾淨</h2>
+  </div>
+  <div style="display:flex; flex-direction:row; gap:40px">
+    <div style="display:flex; flex-direction:column; gap:16px; flex:1">
+      <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:32px; font-weight:700; line-height:1.2; color:#1f3a36">步驟 1　課程日期取起日</h3>
+      <p style="padding:24px 28px; font-family:'LXGW WenKai Mono TC', 'Courier New', monospace; font-size:26px; line-height:1.6; color:#f4efe3; background:#1f3a36; border-radius:16px">「貼上區」工作表的 G 欄是課程日期，內容是文字，長這樣：<br>112/09/01 00:00:00~112/09/30 23:59:00<br>前面的 112 是民國年。我想在 Q4 取出開始那一天，變成 Excel 的日期。<br>例如上面這筆要變成 2023/9/1。</p>
+      <p style="padding:14px 24px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.5; color:#3f5450; background:#f0ebdd; border-radius:16px"><b>AI 回了什麼：</b>一條公式，把 112 加 1911 換成西元年，再組成日期。</p>
+      <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; font-weight:700; color:#1f6b5f">驗算｜Q4 應該是 2023/9/1</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:16px; flex:1">
+      <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:32px; font-weight:700; line-height:1.2; color:#1f3a36">步驟 2　只算符合的課，文字轉數字</h3>
+      <p style="padding:24px 28px; font-family:'LXGW WenKai Mono TC', 'Courier New', monospace; font-size:26px; line-height:1.6; color:#f4efe3; background:#1f3a36; border-radius:16px">「貼上區」M 欄是積分，是文字格式，例如 0.50。N 欄是認可狀態。<br>請在 R4 顯示：認可狀態是「符合」就把積分變成數字，其他一律是 0。</p>
+      <p style="padding:14px 24px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.5; color:#3f5450; background:#f0ebdd; border-radius:16px"><b>AI 回了什麼：</b>一條公式，「符合」的課才把積分轉成數字，其他都給 0。</p>
+      <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; font-weight:700; color:#1f6b5f">驗算｜R4、R5、R6 應該是 0.5、0、0.52</p>
+    </div>
+  </div>
+  <div style="position:absolute; right:128px; bottom:64px; left:128px; display:flex; flex-direction:row; justify-content:space-between">
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#5c6b67">Excel × AI 長照行政課程</p>
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#5c6b67">11 / 28</p>
+  </div>
+  <aside>【時間】15:00–18:00（3 分鐘，講師講解）
+【對應規則】規則 1：只算認可狀態「符合」且積分大於 0 的課；課程日期取起日。
+【重點】
+・這張講的是「怎麼跟 AI 討論」，不講公式本身。每一步都照三段走：我怎麼問 → AI 回了什麼 → 怎麼驗算。
+・步驟 1（約 1 分 30 秒）：
+　怎麼問：先說工作表和欄位、貼一筆原始內容讓 AI 看到格式、說明 112 是民國年、最後給一個「應該變成什麼」的例子。
+　驗算：Q4 應該是 2023/9/1。如果顯示成一串數字，把儲存格格式改成日期。
+・步驟 2（約 1 分 30 秒），要教的觀念只有一個：「看起來是數字，Excel 不一定當它是數字」。
+　怎麼認出來：數字靠左對齊、儲存格左上角有綠色小三角形、SUM 加出來是 0 或比預期少。
+　為什麼會這樣：平台匯出的資料常把數字存成文字，不是你做錯。
+　怎麼問：在提問裡講一句「M 欄是文字格式」，AI 就會自己處理，你不用記函數。
+　驗算：R4、R5、R6 應該是 0.5、0、0.52（R5 是 0，因為那堂課的積分本來就是 0.00）。
+・一句話給學員：「加總結果怪怪的，先看是不是文字；是的話，告訴 AI。」
+・這兩步是「輔助欄」。R 欄叫「有效積分」，後面每一條規則都是拿 R 欄去加總。髒資料先整理乾淨，後面才會對。
+【備援公式】不上投影片、不在台上講解；AI 給的寫法不同時對照用。
+　Q4：=DATE(LEFT(G4,3)+1911, MID(G4,5,2), MID(G4,8,2))
+　R4：=IF(OR(G4="", N4&lt;&gt;"符合"), 0, VALUE(M4))
+【待辦】可補 AI 實際回覆的截圖，以及貼上區 G、M、N、Q、R 欄第 3 到 10 列的結果截圖。</aside>
+</section>
+<section id="step-3" data-transition="fade" style="background:#F0EBDD;color:#1F3A36;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px"><div style="display:flex;flex-direction:row;gap:16px;align-items:center"><p style="font-size:24px;font-weight:700;color:#FAF7F0;background:#B4481A;padding:4px 20px;border-radius:40px">討論示範</p><p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#B4481A">案例一｜步驟 3｜規則 3</p></div><h2 style="font-size:64px;font-weight:700;line-height:1.15">品質倫理法規：至少 24 點</h2></div>
+<div style="display:flex;flex-direction:row;gap:48px">
+<div style="width:920px;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:700;color:#1F6B5F">我怎麼問｜第一問：三種課加起來</p>
+<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.55;background:#1F3A36;color:#F4EFE3;padding:20px 28px;border-radius:16px">「貼上區」E 欄是身分證字號，K 欄是課程屬性，R 欄是有效積分。<br>「人員總表」C 欄是身分證字號。<br>我想在人員總表 V6 算出這個人「專業品質、專業倫理、專業法規」三種課的有效積分合計。<br>例如 Z900000001 應該是 70.57。</p>
+<p style="font-size:24px;font-weight:700;color:#1F6B5F">我怎麼問｜第二問：夠不夠 24 點</p>
+<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.55;background:#1F3A36;color:#F4EFE3;padding:20px 28px;border-radius:16px">V6 是品質倫理法規合計。我想在 W6 顯示：滿 24 點就顯示「✓」，不到就顯示「尚缺」和還差幾點。</p>
+<p style="font-size:26px;line-height:1.5;color:#3F5450;background:#FAF7F0;border-radius:16px;padding:14px 24px"><b>拿到回答後：</b>先對 Z900000001 是不是 70.57。最常見的錯是只加到其中一種課。</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:18px;background:#FAF7F0;border-radius:16px;padding:36px 40px">
+<h3 style="font-size:36px;font-weight:700;line-height:1.2;color:#1F6B5F">驗算：合計與判定</h3>
+<div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:14px 0px 0px 0px"><p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:30px">Z900000001</p><p style="font-size:32px;font-weight:700">70.57　✓</p></div><div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:14px 0px 0px 0px"><p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:30px">Z900000002</p><p style="font-size:32px;font-weight:700">14.68　尚缺 9.32</p></div><div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:14px 0px 0px 0px"><p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:30px">Z900000003</p><p style="font-size:32px;font-weight:700">9.18　尚缺 14.82</p></div>
+<p style="font-size:26px;line-height:1.5;color:#5C6B67">超過 36 點只採計 36 點。Z900000001 的 70.57 點，到步驟 6 算總積分時只會算 36。</p>
+</div>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#5C6B67">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#5C6B67">12 / 28</p></div>
+<aside>【時間】18:00–20:30（2 分 30 秒，講師講解）
+【對應規則】規則 3：品質＋倫理＋法規合計至少 24 點；超過 36 點只採計 36 點。
+【重點】
+・照三段講：我怎麼問 → 拿到回答後看什麼 → 驗算。
+・拆解第一問：兩張工作表各有哪些欄位、要加總的是哪三種課、結果放哪一格、最後附一個已知答案。
+・「例如 Z900000001 應該是 70.57」這句很重要：AI 會用它來檢查自己的公式，你也用它來檢查 AI。
+・「一次只問一件事」：合計和判定分兩次問，每次拿一條公式，確認了再問下一個。
+・拿到回答後：最常見的狀況是 AI 只加了其中一種課，或用了新版函數。數字對不上，就用「卡關怎麼辦」那張的句子回報。
+・驗算三位：Z900000001 是 70.57、✓；Z900000002 是 14.68、尚缺 9.32；Z900000003 是 9.18、尚缺 14.82。
+・「超過 36 只採計 36」先不在這一步處理，只提醒有這條上限，步驟 6 會用到。
+・這一步背後是 SUMIFS，可以點出名字，但不需要解釋公式。
+【措辭規範】說「尚缺」「待補」，不說「不合格」「違規」。
+【說明】驗算值取自示範資料版檢查表人員總表 V、W 欄，並以貼上區原始資料重算確認。
+【備援公式】不上投影片；實測後把 AI 實際回覆的 V6、W6 公式記在這裡，AI 給的寫法不同時對照用。
+【待辦】可補 AI 實際回覆的截圖，以及人員總表 C5:W10 相關欄位的結果截圖。</aside>
+</section>
+<section id="step-4" data-transition="fade" style="background:#F0EBDD;color:#1F3A36;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px"><div style="display:flex;flex-direction:row;gap:16px;align-items:center"><p style="font-size:24px;font-weight:700;color:#FAF7F0;background:#B4481A;padding:4px 20px;border-radius:40px">討論示範</p><p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#B4481A">案例一｜步驟 4｜規則 4</p></div><h2 style="font-size:64px;font-weight:700;line-height:1.15">四大核心：各至少 1 點，合計 10 點</h2></div>
+<div style="display:flex;flex-direction:row;gap:48px">
+<div style="width:920px;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:700;color:#1F6B5F">我怎麼問｜第一問：一科一欄</p>
+<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.55;background:#1F3A36;color:#F4EFE3;padding:20px 28px;border-radius:16px">「貼上區」L 欄是課程類別。四大核心是：消防安全、緊急應變、感染管制、性別敏感度。<br>我想在人員總表 X6、Y6、Z6、AA6 分別算出這個人這四種課的有效積分合計，請一次給我一欄。<br>例如 Z900000001 的感染管制應該是 30.79。</p>
+<p style="font-size:24px;font-weight:700;color:#1F6B5F">我怎麼問｜第二問：合計與判定</p>
+<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.55;background:#1F3A36;color:#F4EFE3;padding:20px 28px;border-radius:16px">AB6 是四科合計。我想在 AC6 顯示：有哪一科不到 1 點，就列出缺哪幾科；四科都有但合計不到 10 點，就顯示還差幾點；都符合顯示「✓」。</p>
+<p style="font-size:26px;line-height:1.5;color:#3F5450;background:#FAF7F0;border-radius:16px;padding:14px 24px"><b>拿到回答後：</b>用右邊三位對三種結果，三種都對了才算完成。</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:18px;background:#FAF7F0;border-radius:16px;padding:36px 40px">
+<h3 style="font-size:36px;font-weight:700;line-height:1.2;color:#1F6B5F">驗算：三種結果</h3>
+<div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:14px 0px 0px 0px"><p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:28px">Z900000001</p><p style="font-size:30px;font-weight:700">缺：性別</p></div><div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:14px 0px 0px 0px"><p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:28px">Z900000019</p><p style="font-size:30px;font-weight:700">合計尚缺 5</p></div><div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:14px 0px 0px 0px"><p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:28px">Z900000020</p><p style="font-size:30px;font-weight:700">✓</p></div>
+<p style="font-size:26px;line-height:1.5;color:#5C6B67">Z900000001 四科是 1、1、30.79、0。感染管制修了很多，性別敏感度卻一點都沒有。</p>
+</div>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#5C6B67">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#5C6B67">13 / 28</p></div>
+<aside>【時間】20:30–22:30（2 分鐘，講師講解）
+【對應規則】規則 4：四大核心各至少 1 點，且合計至少 10 點。
+【重點】
+・同一招再用一次：把上一步的「三種課」換成「一科一欄」。
+・拆解第一問：把四科的名稱照匯出檔的寫法列出來，並說「請一次給我一欄」，維持一次一步。
+・拆解第二問：這條規則有兩個條件，所以把三種情況逐一講清楚（缺科、合計不足、都符合）。情況講得越完整，AI 越不會漏。
+・拿到回答後，用三位對三種結果：
+　Z900000001：消防 1、緊急 1、感染 30.79、性別 0，合計 32.79，結果是「缺：性別」。
+　Z900000019：四科是 1、1、2、1，每科都有，但合計只有 5，結果是「合計尚缺 5」。
+　Z900000020：四科是 3.4、2、7.18、2.4，合計 14.98，結果是「✓」。
+・帶出觀念：總點數很高不代表每一科都有。這種「看總數看不出來」的缺口，正是檢核表的價值。
+【措辭規範】說「尚缺」「待補」，不說「不合格」「違規」。
+【說明】驗算值取自示範資料版檢查表人員總表 X 到 AC 欄。完整版判定欄的文字是「合計尚缺 5.00」，AI 給的格式可能略有不同。
+【備援公式】不上投影片；實測後把 AI 實際回覆的 X6 到 AC6 公式記在這裡，AI 給的寫法不同時對照用。
+【待辦】可補 AI 實際回覆的截圖，以及人員總表 X5:AC10 的結果截圖。</aside>
+</section>
+<section id="step-5a" data-transition="fade" style="background:#FAF7F0;color:#1F3A36;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:column;gap:12px"><div style="display:flex;flex-direction:row;gap:16px;align-items:center"><p style="font-size:24px;font-weight:700;color:#FAF7F0;background:#B4481A;padding:4px 20px;border-radius:40px">討論示範</p><p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#B4481A">案例一｜步驟 5｜規則 5、6</p></div><h2 style="font-size:64px;font-weight:700;line-height:1.15">到期日與網路課程上限</h2></div>
+<div style="display:flex;flex-direction:row;gap:48px">
+<div style="width:980px;display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.5;background:#1F3A36;color:#F4EFE3;padding:16px 24px;border-radius:16px">「人員名冊」C 欄是認證生效日，是民國年文字，例如 112/09/01。<br>請在 E4 算出到期日：生效日加 6 年再減 1 天。例如 112/09/01 要變成 2029/8/31。</p>
+<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.5;background:#1F3A36;color:#F4EFE3;padding:16px 24px;border-radius:16px">「人員名冊」B 欄是身分證字號，C 欄是認證生效日，資料在第 4 到 303 列。<br>我想在人員總表 S6 用 C6 的身分證字號找到這個人的生效日，找不到就顯示「名冊未登錄」。</p>
+<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.5;background:#1F3A36;color:#F4EFE3;padding:16px 24px;border-radius:16px">S6 是民國年文字的生效日。我想在 T6 顯示網路課程上限：112/10/12 以前是 60，112/10/13 到 115/06/30 是 40，115/07/01 起是 80。S6 是「名冊未登錄」就留空白。</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-direction:column;gap:8px;background:#B4481A;border-radius:16px;padding:24px 36px">
+<p style="font-size:40px;font-weight:900;line-height:1.3;color:#FAF7F0">這就是 VLOOKUP。</p>
+<p style="font-size:30px;font-weight:700;line-height:1.4;color:#FAF7F0">是 AI 寫的，不是你背的。</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#FFFDF8;border:1px solid #E2DACA;border-radius:16px;padding:24px 36px">
+<h3 style="font-size:32px;font-weight:700;line-height:1.2;color:#1F6B5F">驗算</h3>
+<div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:14px 0px 0px 0px"><p style="font-size:26px">名冊第 4 列</p><p style="font-size:26px;font-weight:700">112/02/13 → 118/02/12</p></div><div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:14px 0px 0px 0px"><p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px">Z900000001</p><p style="font-size:26px;font-weight:700">112/02/13　上限 60</p></div><div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:14px 0px 0px 0px"><p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px">Z900000002</p><p style="font-size:26px;font-weight:700">114/06/09　上限 40</p></div><div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:14px 0px 0px 0px"><p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px">Z900000005</p><p style="font-size:26px;font-weight:700">名冊未登錄</p></div>
+</div>
+<p style="font-size:26px;line-height:1.5;color:#3F5450;background:#F0EBDD;border-radius:16px;padding:14px 24px"><b>拿到回答後：</b>找不到的人要顯示「名冊未登錄」，不是錯誤訊息。</p>
+</div>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#5C6B67">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#5C6B67">14 / 28</p></div>
+<aside>【時間】22:30–24:30（2 分鐘，講師講解）
+【對應規則】規則 6：到期日＝生效日加 6 年減 1 天。規則 5：網路課程採計上限依認證生效日而定。
+【重點】
+・三個提問依序講，每個都照「怎麼問 → 拿到回答後看什麼 → 驗算」。
+・第一問（人員名冊 E4）：把民國年文字變成真正的日期，再加 6 年減 1 天。拆解：欄位、內容長什麼樣、規則、一個例子。例子 112/09/01 變成 2029/8/31，讓 AI 自己對答案。
+・第二問（人員總表 S6）：用身分證字號去人員名冊找生效日。講清楚「用哪一格去找」「去哪張表找」「找不到怎麼辦」。
+・全課金句，停一下再講：「AI 回的這條公式，就是 VLOOKUP。是 AI 寫的，不是你背的。」只點出名字，不展開公式。
+・補一句：如果 AI 給的是別的查找寫法也沒關係，重點是你說得出「用這個找那個」。
+・拿到回答後：找不到的人要顯示「名冊未登錄」，不是 #N/A 這類錯誤訊息。是錯誤訊息，就回頭跟 AI 說「找不到時要顯示名冊未登錄」。
+・第三問（人員總表 T6）：把規則 5 的三個日期區間直接寫給 AI。規則裡有日期門檻時，把每一段的起訖日講死，不要讓 AI 自己猜。
+・驗算：人員名冊第 4 列生效日 112/02/13，到期日應該是 118/02/12（西元 2029/2/12）；Z900000001 生效日 112/02/13、上限 60；Z900000002 生效日 114/06/09、上限 40；Z900000005 名冊未登錄。
+・法規依據一句話帶過：《長期照顧服務人員訓練認證繼續教育及登錄辦法》，認證有效期間六年。
+・到期提醒（180 天內到期標示）在完整版檢查表裡已經做好，課堂不另外講。
+【注意】網路上限的日期區間來自工具實作（112/10/12 含以前 60 點；112/10/13 至 115/06/30 為 40 點；115/07/01 起 80 點），對外引用前須以現行規定確認。
+【備援公式】不上投影片；實測後把 AI 實際回覆的 E4、S6、T6 公式記在這裡，AI 給的寫法不同時對照用。
+【待辦】可補 AI 實際回覆的截圖，以及人員名冊 A3:E8 與人員總表 S、T 欄的結果截圖。若實測時 AI 沒有使用 VLOOKUP，橘色方塊的文字要跟著改。</aside>
+</section>
+<section id="step-5b" data-transition="fade" style="background:#FAF7F0;color:#1F3A36;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px"><div style="display:flex;flex-direction:row;gap:16px;align-items:center"><p style="font-size:24px;font-weight:700;color:#FAF7F0;background:#B4481A;padding:4px 20px;border-radius:40px">討論示範</p><p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#B4481A">案例一｜步驟 6｜規則 2</p></div><h2 style="font-size:64px;font-weight:700;line-height:1.15">採計總積分，距 120 點還缺多少</h2></div>
+<div style="display:flex;flex-direction:row;gap:48px">
+<div style="width:900px;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:700;color:#1F6B5F">我怎麼問｜第一問：公式會很長，請 AI 先拆輔助欄</p>
+<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.55;background:#1F3A36;color:#F4EFE3;padding:20px 28px;border-radius:16px">人員總表 R6 要算「採計總積分」：這個人全部的有效積分，先扣掉品質倫理法規超過 36 點的部分，再扣掉網路課程超過 T6 上限的部分。<br>請先告訴我需要哪些輔助欄，一次給我一欄。<br>例如 Z900000001 應該是 69。</p>
+<p style="font-size:24px;font-weight:700;color:#1F6B5F">我怎麼問｜第二問：還缺幾點</p>
+<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.55;background:#1F3A36;color:#F4EFE3;padding:20px 28px;border-radius:16px">R6 是採計總積分。我想在 Q6 顯示距離 120 點還缺幾點，已經超過就顯示 0。</p>
+<p style="font-size:26px;line-height:1.5;color:#3F5450;background:#F0EBDD;border-radius:16px;padding:14px 24px"><b>拿到回答後：</b>先看 AI 打算拆哪幾欄，同意了再一欄一欄拿。最後對 Z900000001 是不是 69。</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;background:#FFFDF8;border:1px solid #E2DACA;border-radius:16px;padding:28px 36px">
+<h3 style="font-size:32px;font-weight:700;line-height:1.25;color:#1F6B5F">驗算：Z900000001</h3>
+<div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:12px 0px 0px 0px"><p style="font-size:26px;line-height:1.4">全部有效積分</p><p style="font-size:28px;font-weight:700">109.53</p></div><div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:12px 0px 0px 0px"><p style="font-size:26px;line-height:1.4">品質倫理法規 70.57，只採計 36</p><p style="font-size:28px;font-weight:700">−34.57</p></div><div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:12px 0px 0px 0px"><p style="font-size:26px;line-height:1.4">剩下的網路課程 65.96，上限 60</p><p style="font-size:28px;font-weight:700">−5.96</p></div><div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:12px 0px 0px 0px"><p style="font-size:26px;line-height:1.4"><b>採計總積分</b></p><p style="font-size:34px;font-weight:900">69</p></div><div style="display:flex;flex-direction:row;justify-content:space-between;align-items:baseline;border-top:1px solid #CFC6B2;padding:12px 0px 0px 0px"><p style="font-size:26px;line-height:1.4"><b>距 120 點尚缺</b></p><p style="font-size:34px;font-weight:900">51</p></div>
+<p style="font-size:26px;line-height:1.5;color:#5C6B67">全部加起來是 109.53，採計後只有 69。這是預估，最終以平台及主管機關審查為準。</p>
+</div>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#5C6B67">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#5C6B67">15 / 28</p></div>
+<aside>【時間】24:30–27:00（2 分 30 秒，講師講解）
+【對應規則】規則 2：採計總積分達 120 點。同時用到規則 3 的 36 點上限與規則 5 的網路上限。
+【重點】
+・這是最複雜的一步，重點放在「怎麼跟 AI 討論複雜的規則」，不講公式。
+・先問台下：Z900000001 所有有效積分加起來是 109.53，離 120 只差 10 點多，對嗎？答案是不對。
+・帶著右邊的算式走一遍：
+　全部有效積分 109.53。
+　品質倫理法規修了 70.57，但最多只採計 36，所以扣掉 34.57。
+　扣完之後，網路課程還有 65.96，這位的上限是 60，所以再扣掉 5.96。
+　採計總積分是 69，距離 120 點還缺 51。
+・拆解第一問：規則一多，公式就會很長。這時不要硬要一條公式，而是請 AI 先說需要哪些輔助欄，你看過同意了，再一欄一欄給。呼應起手式那句「寧可多幾欄，不要一條很長的公式」。
+・「例如 Z900000001 應該是 69」是這一步的保險。沒有這個已知答案，109.53 看起來也很合理。
+・第二問很單純：120 減掉採計總積分，超過就顯示 0。
+・另外兩位也可以對：Z900000002 採計總積分 35.28、尚缺 84.72；Z900000003 採計總積分 43.75、尚缺 76.25（這兩位沒有超過任何上限，所以等於全部加總）。
+・完整版檢查表還會把各項結果合成一格「換證預估結果」。示範資料的 42 列裡，36 列是「尚有待補項目」，另外 6 列因為人員名冊沒有登錄生效日而無法預估。
+【措辭規範】一律說「預估」，並說明最終以平台及主管機關審查為準。說「尚缺」「待補」，不說「不合格」「違規」。
+【已知限制】總積分採計匯出檔內全部符合的課程，不另外依效期篩選；匯出檔若含前一張證書期間的課，總分會高估。課堂版也不含文化課程的規則。
+【說明】驗算值取自示範資料版檢查表人員總表 Q、R、T、U、V 欄。「剩下的網路課程 65.96」是完整版扣除 36 點上限後的網路可採計點數。
+【備援公式】不上投影片；實測後把 AI 實際回覆的輔助欄與 R6、Q6 公式記在這裡。這一步的提問尚未實測，AI 的拆法可能和完整版不同，以實測結果為準。
+【待辦】可補 AI 回覆「需要哪些輔助欄」的截圖。</aside>
+</section>
+<section id="stuck" data-transition="fade" style="background:#FAF7F0;color:#1F3A36;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#B4481A">案例一｜卡關怎麼辦</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">照實描述，貼回去給 AI</h2>
+</div>
+<table style="font-size:26px;color:#1F3A36;font-family:'Noto Sans TC', Arial, sans-serif">
+<tr style="background:#1F3A36"><th style="width:30%;text-align:left;color:#FAF7F0">狀況</th><th style="width:70%;text-align:left;color:#FAF7F0">貼回去的話</th></tr>
+<tr><td>公式出現錯誤訊息</td><td>「R4 出現 #VALUE!。它參照的 M4 內容是 0.50，靠左對齊。」</td></tr>
+<tr><td>沒報錯但數字不對</td><td>「Z900000001 的品質倫理法規應該是 70.57，我得到的數字不一樣。」</td></tr>
+<tr><td>Excel 不認得某個函數</td><td>「我的 Excel 沒有這個函數，請改用舊版也能跑的寫法。」</td></tr>
+<tr><td>公式太長</td><td>「請拆成兩到三個輔助欄，每欄只做一件事。」</td></tr>
+<tr><td>對話太長</td><td>「請整理目前進度，我要貼到新對話接續。」</td></tr>
+</table>
+<div style="display:flex;flex-direction:row;gap:32px">
+<p style="flex:1;font-size:26px;line-height:1.5;background:#F0EBDD;border-radius:16px;padding:24px 32px"><b>也可以直接貼截圖。</b>截圖要含欄名列號，且不得出現真實個資。</p>
+<p style="flex:1;font-size:26px;line-height:1.5;color:#FAF7F0;background:#1F3A36;border-radius:16px;padding:24px 32px"><b>常見例子：</b>跳過步驟 2 直接加總 M 欄，公式不報錯，結果卻是 0。</p>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#5C6B67">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#5C6B67">16 / 28</p></div>
+<aside>【時間】27:00–28:30（1 分 30 秒）
+【重點】
+・公式出錯很正常，重點是「怎麼回報」。原則只有一個：照實描述你看到的，不要自己猜原因。
+・前三句最常用，逐句念過：
+　有錯誤訊息：說哪一格、出現什麼、它參照的格子內容長什麼樣。
+　沒報錯但數字不對：說「應該是多少、我得到多少」。
+　不認得函數：請它改用舊版也能跑的寫法。
+・後兩句是進階：公式太長就拆輔助欄；對話太長就請 AI 整理進度，開新對話接續。
+・截圖也可以：要截到欄名列號，而且畫面上不能有真實個資。
+・最值得講的卡關（約 40 秒）：如果跳過步驟 2，直接拿 M 欄去加總品質倫理法規，公式不報錯，但結果是 0，因為積分是文字。這時把「應該是 70.57，我得到 0」回報給 AI，它就會發現要先把文字轉成數字。
+【待辦】可補一張卡關對話的截圖。</aside>
+</section>
+<section id="verify" data-transition="fade" style="background:#B4481A;color:#FAF7F0;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:space-between;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#FBE3B4">案例一｜驗算</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">最不能省的一步</h2>
+</div>
+<p style="font-size:112px;font-weight:900;line-height:1.25">AI 會錯，<br>而且不會報錯。</p>
+<div style="display:flex;flex-direction:row;gap:32px">
+<p style="flex:1;font-size:30px;line-height:1.5;color:#1F3A36;background:#FAF7F0;border-radius:16px;padding:28px 36px"><b>做法：</b>挑兩三位你已經知道答案的同仁，逐一對照。</p>
+<p style="flex:1;font-size:30px;line-height:1.5;color:#1F3A36;background:#FAF7F0;border-radius:16px;padding:28px 36px"><b>分工：</b>AI 寫公式，你負責驗算。對了才貼上真實資料。</p>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#FBE3B4">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#FBE3B4">17 / 28</p></div>
+<aside>【時間】28:30–30:00（1 分 30 秒）
+【重點】
+・放慢速度，這是整堂課最重要的一張。
+・接續剛才的示範：加總 M 欄得到 0，Excel 沒有任何錯誤訊息。如果你沒有先知道 Z900000001 的品質倫理法規應該是 70.57，就會把 0 交出去。
+・AI 會錯，而且錯的時候不會告訴你。公式能跑不代表答案對。
+・做法：做表之前，先挑兩三位你手算得出來、或已經知道答案的同仁。每做完一步就對照一次。
+・回扣四樣東西的第四樣「已知答案」：它不是可有可無，是你唯一的保險。
+・分工再說一次：AI 寫公式，你負責驗算。驗算過了，才把真實資料貼進自己的 Excel。
+・案例一到此結束，問一句「到這裡有沒有問題？」再進案例二。</aside>
+</section>
+<section id="case2" data-transition="fade" style="background:#1F3A36;color:#FAF7F0;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#F2B83B">案例二｜任務說明</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">交通車趟次核銷比對</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:center">
+<div style="width:620px;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:column;gap:8px;background:#2B4D47;border-radius:16px;padding:32px 36px">
+<h3 style="font-size:34px;font-weight:700;line-height:1.2">照顧組合服務費用項目清冊</h3>
+<p style="font-size:26px;line-height:1.5;color:#CFE0DB">平台匯出。同一位個案可能有好幾列，次數要加總。</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#2B4D47;border-radius:16px;padding:32px 36px">
+<h3 style="font-size:34px;font-weight:700;line-height:1.2">交通車系統資料</h3>
+<p style="font-size:26px;line-height:1.5;color:#CFE0DB">交通車系統匯出。一趟一列，次數要用數的。</p>
+</div>
+</div>
+<p style="font-size:96px;font-weight:700;color:#F2B83B">→</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FAF7F0;border-radius:16px;padding:40px 44px">
+<p style="font-size:24px;font-weight:700;color:#B4481A">要做出來的表</p>
+<h3 style="font-size:44px;font-weight:700;line-height:1.2;color:#1F3A36">不相符名單</h3>
+<ul style="font-size:30px;line-height:1.6;color:#1F3A36">
+<li>每位用戶的次數是否相同</li>
+<li>每位用戶的金額是否相同</li>
+<li>只列出對不上的人</li>
+</ul>
+</div>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#A9BDB8">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#A9BDB8">18 / 28</p></div>
+<aside>【時間】30:00–31:00（1 分鐘）
+【重點】
+・進入案例二。換一個完全不同的情境，但流程和案例一一模一樣。
+・情境：每個月要核銷交通接送。平台的清冊寫每位個案申報幾次、部分負擔多少；交通車系統記錄實際跑了哪幾趟、每趟收多少。兩邊要對得起來。
+・兩份資料長得不一樣：清冊是「一位個案一列（有時多列）」，直接寫次數；交通車系統是「一趟一列」，次數要自己數。
+・任務一句話：把兩份資料都整理成一人一列，比對次數和金額，只列出對不上的人。
+・這段對應學習目標 03「AI 協助校對」：核銷比對本質上就是找出不符項目。
+・預告：這個案例不帶學員逐步實作，而是完整呈現「我們實際怎麼跟 AI 一起把工具做出來」，重點在過程中的判斷。
+【個資】本案例所有畫面只能使用去識別化示範資料。</aside>
+</section>
+<section id="case2-brief" data-transition="fade" style="background:#faf7f0">
+  <div id="e1-15cyi4c" style="position:absolute; right:128px; bottom:64px; left:128px; display:flex; flex-direction:row; justify-content:space-between">
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#5c6b67">Excel × AI 長照行政課程</p>
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#5c6b67">19 / 28</p>
+  </div>
+  <div id="p15d2457eafc9r0-d29430f1" style="position:absolute; top:128px; left:128px; width:1664px; height:120px; display:flex; flex-direction:column; gap:12px">
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; letter-spacing:2px; color:#b4481a">案例二｜交代清楚</p>
+    <h2 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:64px; font-weight:700; line-height:1.15; color:#1f3a36">我們實際給 AI 的交代</h2>
+  </div>
+  <div id="p15d2457eafc9r1-d29430f1" style="position:absolute; top:279px; left:128px; width:1664px; height:544px; display:flex; flex-direction:row; gap:48px">
+    <div style="width:900px; display:flex; flex-direction:column; gap:16px">
+      <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; color:#1f6b5f">提問原文（姓名已遮蔽，另附兩份檔案）</p>
+      <p style="padding:24px 28px; font-family:'LXGW WenKai Mono TC', 'Courier New', monospace; font-size:26px; line-height:1.6; color:#f4efe3; background:#1f3a36; border-radius:16px"># 目標<br>交通車趟次核銷比對<br># 流程<br>1. 清冊擷取 C 欄姓名、K 欄次數、N 欄部分負擔費用。同一個姓名會有多筆紀錄，要把 K 欄次數合併計數。如圖一尤O章，K 欄分別有 14 次、2 次，加總後是 16 次。<br>2. 交通車系統資料取 B 欄姓名、K 欄金額。次數是計數 B 欄相同姓名的次數，並針對該用戶加總金額。<br>3. 把兩份結果比對金額以及次數是否相同，在另一張表產出不相符的用戶名。</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:12px; flex:1">
+      <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; line-height:1.4; letter-spacing:2px; color:#1f6b5f">圖一：清冊裡同一人有兩列（示範資料）</p>
+      <img src="簡報原始檔/assets/64c256ff67743209ca3d047c6e523968.png" alt="清冊貼上區第 5 到 8 列：尤O章有兩列，次數分別是 14 與 2" style="width:700px; height:242px; background:#ffffff; border:1px solid #cfc6b2; border-radius:8px; object-fit:contain">
+      <div style="display:flex; flex-direction:column">
+        <p style="padding:10px 0; font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.45; color:#1f3a36; border-top:1px solid #cfc6b2"><span style="color:#1f6b5f"><b>資料：有。</b></span>兩份匯出檔，講明哪一欄是什麼</p>
+        <p style="padding:10px 0; font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.45; color:#1f3a36; border-top:1px solid #cfc6b2"><span style="color:#1f6b5f"><b>規則：有。</b></span>三條，一行一條</p>
+        <p style="padding:10px 0; font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.45; color:#1f3a36; border-top:1px solid #cfc6b2"><span style="color:#1f6b5f"><b>已知答案：有。</b></span>尤O章應該是 16 次</p>
+        <p style="padding:10px 0; font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.45; color:#1f3a36; border-top:1px solid #cfc6b2; border-bottom:1px solid #cfc6b2"><span style="color:#b4481a"><b>合作方式：這次沒寫。</b></span>AI 一次做完整份工具</p>
+      </div>
+    </div>
+  </div>
+  <aside>【時間】31:00–33:00（2 分鐘） 【重點】 ・這是我們做這份工具時，實際打給 AI 的第一則訊息（姓名已遮蔽）。請學員用「四樣東西」來檢查它。 ・資料：兩份匯出檔，而且講明「哪一欄是什麼」。這裡用的是欄位代號（C 欄、K 欄、N 欄），先埋個伏筆，後面會回來談。 ・規則：三條。第一條講清楚「同一個人有多筆要加總」，第二條講清楚「次數是用數的」，第三條講清楚要的成果是「另一張表、只列不相符的人」。 ・已知答案：右上的圖一。尤O章在清冊有兩列，次數是 14 和 2，加起來 16 次。這個例子後來真的用來驗算。附一張圖比用文字描述更不容易誤會。 ・合作方式：這次沒寫，所以 AI 一口氣把整份工具做完。好處是快，代價是我們事後要回頭追問它怎麼做的。課堂上可以問學員：你會想加哪一句？ 【個資提醒】我們製作工具時用的是真實匯出檔。課堂重現時，必須改用去識別化的示範檔，投影片與截圖也只能出現遮蔽後的姓名。 【說明】圖一取自示範資料版工具的「清冊貼上區」，D 到 J 欄已隱藏，只留身分證號、姓名、次數與費用欄。</aside>
+</section>
+<section id="case2-findings" data-transition="fade" style="background:#FAF7F0;color:#1F3A36;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#B4481A">案例二｜AI 先看資料</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">規則沒寫到的四件事</h2>
+</div>
+<div style="display:flex;flex-direction:column;gap:0px">
+<div style="display:flex;flex-direction:row;gap:32px;align-items:baseline;border-top:1px solid #CFC6B2;padding:14px 0px">
+<p style="width:56px;font-size:40px;font-weight:900;color:#B4481A">1</p>
+<p style="width:760px;font-size:30px;font-weight:700;line-height:1.45">交通車資料的姓名後面多了「★」</p>
+<p style="flex:1;font-size:28px;line-height:1.45;color:#3F5450">直接比會全部對不上，要先去掉</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:baseline;border-top:1px solid #CFC6B2;padding:14px 0px">
+<p style="width:56px;font-size:40px;font-weight:900;color:#B4481A">2</p>
+<p style="width:760px;font-size:30px;font-weight:700;line-height:1.45">兩份檔案的標題列位置不同</p>
+<p style="flex:1;font-size:28px;line-height:1.45;color:#3F5450">清冊在第 5 列，交通車在第 1 列</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:baseline;border-top:1px solid #CFC6B2;padding:14px 0px">
+<p style="width:56px;font-size:40px;font-weight:900;color:#B4481A">3</p>
+<p style="width:760px;font-size:30px;font-weight:700;line-height:1.45">交通車資料沒有身分證號</p>
+<p style="flex:1;font-size:28px;line-height:1.45;color:#3F5450">只能用姓名比，同名同姓會被合併</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:baseline;border-top:1px solid #CFC6B2;border-bottom:1px solid #CFC6B2;padding:14px 0px">
+<p style="width:56px;font-size:40px;font-weight:900;color:#B4481A">4</p>
+<p style="width:760px;font-size:30px;font-weight:700;line-height:1.45">「搭乘狀況」這次全部是「完成」</p>
+<p style="flex:1;font-size:28px;line-height:1.45;color:#3F5450">若有取消的趟次，規則要再補一條</p>
+</div>
+</div>
+<p style="font-size:32px;font-weight:700;line-height:1.5;color:#FAF7F0;background:#1F3A36;border-radius:16px;padding:28px 40px">你寫的規則只涵蓋你想得到的情況。資料裡的意外，要請 AI 回報，再由你決定怎麼處理。</p>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#5C6B67">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#5C6B67">20 / 28</p></div>
+<aside>【時間】33:00–34:30（1 分 30 秒）
+【重點】
+・AI 動手前先把兩份資料讀過一遍，回報了四件我們在規則裡沒寫到的事。
+・第 1 件最關鍵：交通車系統的姓名後面多數帶「★」，清冊沒有。如果直接拿姓名去比，十個人會全部顯示「查無此人」。這跟案例一「積分是文字」是同一種坑：資料看起來一樣，其實不一樣。
+・第 2 件：清冊前面有四列表頭（案號、服務單位、版號），標題在第 5 列；交通車的標題在第 1 列。
+・第 3 件：交通車資料只有姓名，沒有身分證號。所以只能用姓名比對，遇到同名同姓的不同用戶會被合成一人，要人工確認。
+・第 4 件：這次 50 趟的搭乘狀況都是「完成」。但如果匯出檔會包含取消或未完成的趟次，就要補一條規則「只計完成」。
+・帶出觀念：這四件事裡，第 1、2 件 AI 可以自己處理；第 3、4 件是業務判斷，一定要由你決定。
+・可以教學員在起手式多加一句：「開始之前，先告訴我資料裡有什麼跟我說的不一樣的地方。」</aside>
+</section>
+<section id="case2-design" data-transition="fade" style="background:#FAF7F0;color:#1F3A36;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#B4481A">案例二｜工具的設計</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">資料怎麼流過五張工作表</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:20px;align-items:stretch">
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#FFFDF8;border:1px solid #E2DACA;border-top:12px solid #F2B83B;border-radius:16px;padding:20px 28px">
+<h3 style="font-size:32px;font-weight:700;line-height:1.2">兩個貼上區</h3>
+<p style="font-size:26px;line-height:1.45;color:#3F5450">匯出檔整張貼上，不做任何修改。</p>
+</div>
+<p style="align-self:center;font-size:48px;font-weight:700;color:#B4481A">→</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#FFFDF8;border:1px solid #E2DACA;border-top:12px solid #8A9A95;border-radius:16px;padding:20px 28px">
+<h3 style="font-size:32px;font-weight:700;line-height:1.2">整理區</h3>
+<p style="font-size:26px;line-height:1.45;color:#3F5450">去掉「★」和空白，整理出不重複的姓名。</p>
+</div>
+<p style="align-self:center;font-size:48px;font-weight:700;color:#B4481A">→</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#FFFDF8;border:1px solid #E2DACA;border-top:12px solid #1F6B5F;border-radius:16px;padding:20px 28px">
+<h3 style="font-size:32px;font-weight:700;line-height:1.2">比對總表</h3>
+<p style="font-size:26px;line-height:1.45;color:#3F5450">一人一列：次數、金額、差額與結果。</p>
+</div>
+<p style="align-self:center;font-size:48px;font-weight:700;color:#B4481A">→</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#FFFDF8;border:1px solid #E2DACA;border-top:12px solid #B93A2B;border-radius:16px;padding:20px 28px">
+<h3 style="font-size:32px;font-weight:700;line-height:1.2">不相符名單</h3>
+<p style="font-size:26px;line-height:1.45;color:#3F5450">只列對不上的用戶與原因。</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px;align-items:center">
+<img src="簡報原始檔/assets/5951a93542c00b68fcd460187e80d836.png" alt="示範資料版工具的「比對總表」工作表：10 位用戶一人一列，王O儀那一列以紅底標示金額不符" style="width:880px;height:300px;object-fit:contain;background:#FFFFFF;border:1px solid #CFC6B2;border-radius:8px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:26px;line-height:1.45;background:#F0EBDD;border-radius:16px;padding:16px 28px"><b>貼上區只貼不改。</b>下個月換資料，整張蓋掉就好。</p>
+<p style="font-size:26px;line-height:1.45;background:#F0EBDD;border-radius:16px;padding:16px 28px"><b>公式放在別張表。</b>貼資料不會把公式蓋掉。</p>
+<p style="font-size:26px;line-height:1.45;background:#F0EBDD;border-radius:16px;padding:16px 28px"><b>只用舊版函數。</b>舊版 Excel 也能開。</p>
+</div>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#5C6B67">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#5C6B67">21 / 28</p></div>
+<aside>【時間】34:30–36:00（1 分 30 秒）
+【重點】
+・切到 Excel，打開工具，依頁籤顏色從左到右帶一遍：黃色是貼上區、灰色是整理區、綠色是比對總表、紅色是不相符名單。另有一張「說明」寫使用步驟與規則。
+・貼上區：兩張，清冊與交通車各放一份匯出檔。學員只需要做一件事：全選、複製、貼到 A1。
+・整理區：輔助欄。做兩件事：把交通車姓名的「★」和前後空白去掉；替每個姓名標出第一次出現的順序，用來產生「不重複的名單」。這裡可以呼應案例一：一樣是先把髒資料整理乾淨，後面才會對。
+・比對總表：左下的畫面。一人一列。清冊次數是加總，交通車次數是計數，兩邊金額各自加總，然後相減。紅底那一列就是對不上的人。
+・不相符名單：把總表裡結果不是「相符」的人挑出來。這就是使用者一開始要的成果。
+・三個設計原則各講一句。重點是第二個：很多人的範本壞掉，都是因為貼資料時把公式蓋掉了。
+【說明】畫面取自示範資料版工具，是工作表輸出的圖片，不含 Excel 的頁籤列。若要讓學員看到頁籤顏色，請現場切到 Excel，或自行補一張視窗截圖。</aside>
+</section>
+<section id="case2-formulas" data-transition="fade" style="background:#FAF7F0;color:#1F3A36;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#B4481A">案例二｜AI 寫的公式</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">三條規則，三條公式</h2>
+</div>
+<div style="display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-direction:row;gap:32px;align-items:center">
+<div style="width:400px;display:flex;flex-direction:column;gap:4px">
+<h3 style="font-size:32px;font-weight:700;line-height:1.3">清理姓名</h3>
+<p style="font-size:26px;line-height:1.45;color:#3F5450">去掉「★」和前後空白<br>整理區 F2</p>
+</div>
+<p style="flex:1;font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.6;background:#1F3A36;color:#F4EFE3;padding:22px 28px;border-radius:16px">=IF(交通車貼上區!B2="","",TRIM(SUBSTITUTE(交通車貼上區!B2,"★","")))</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:center">
+<div style="width:400px;display:flex;flex-direction:column;gap:4px">
+<h3 style="font-size:32px;font-weight:700;line-height:1.3">清冊次數：加總</h3>
+<p style="font-size:26px;line-height:1.45;color:#3F5450">同一個姓名的次數加起來<br>比對總表 C6</p>
+</div>
+<p style="flex:1;font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.6;background:#1F3A36;color:#F4EFE3;padding:22px 28px;border-radius:16px">=IF(B6="","",SUMIF(整理區!$A$2:$A$1001,B6,整理區!$B$2:$B$1001))</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:center">
+<div style="width:400px;display:flex;flex-direction:column;gap:4px">
+<h3 style="font-size:32px;font-weight:700;line-height:1.3">交通車次數：計數</h3>
+<p style="font-size:26px;line-height:1.45;color:#3F5450">同一個姓名出現幾列<br>比對總表 D6</p>
+</div>
+<p style="flex:1;font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.6;background:#1F3A36;color:#F4EFE3;padding:22px 28px;border-radius:16px">=IF(B6="","",COUNTIF(整理區!$F$2:$F$5001,B6))</p>
+</div>
+</div>
+<p style="font-size:30px;font-weight:700;line-height:1.5;background:#F0EBDD;border-radius:16px;padding:24px 36px">「加總」變成 SUMIF，「計數」變成 COUNTIF。你說的是白話，函數是 AI 選的。</p>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#5C6B67">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#5C6B67">22 / 28</p></div>
+<aside>【時間】36:00–38:00（2 分鐘）
+【重點】
+・這三條是工具裡實際在用的公式，原樣呈現。不用逐字解釋，只要讓學員看出「規則裡的動詞」對應到哪個函數。
+・清理姓名：SUBSTITUTE 把「★」換成空的，TRIM 去掉前後空白。外面那層 IF 是「這一列沒資料就留空白」。
+・清冊次數：規則說「合併計數、加總」，AI 用 SUMIF。意思是：在整理區找到同一個姓名的每一列，把次數加起來。
+・交通車次數：規則說「計數相同姓名的次數」，AI 用 COUNTIF。意思是：數這個姓名出現幾列，一列就是一趟。
+・金額的做法和清冊次數一樣是 SUMIF，只是換一欄，不另外列出。
+・請學員注意公式裡的 $A$2:$A$1001、B6 這些寫法：公式是用「位置」在找資料。這是下一段的主題，先點一下。
+・呼應案例一的金句：這些函數是 AI 選的，你只需要把「加總」「計數」「去掉什麼」講清楚。
+【說明】公式取自 交通車趟次核銷比對.xlsx，如工具日後修改，這張要同步更新。</aside>
+</section>
+<section id="case2-verify" data-transition="fade" style="background:#FAF7F0;color:#1F3A36;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#B4481A">案例二｜驗算</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">用三種方式對答案</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px">
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#FFFDF8;border:1px solid #E2DACA;border-radius:16px;padding:22px 30px">
+<p style="font-size:24px;font-weight:700;color:#1F6B5F">一、已知答案</p>
+<h3 style="font-size:32px;font-weight:700;line-height:1.3">尤O章：14 + 2 = 16 次</h3>
+<p style="font-size:26px;line-height:1.5;color:#3F5450">交通車資料也數到 16 列，結果是「相符」。</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#FFFDF8;border:1px solid #E2DACA;border-radius:16px;padding:22px 30px">
+<p style="font-size:24px;font-weight:700;color:#1F6B5F">二、總數</p>
+<h3 style="font-size:32px;font-weight:700;line-height:1.3">兩邊各 50 趟，共 10 位</h3>
+<p style="font-size:26px;line-height:1.5;color:#3F5450">總數對得上，代表沒有漏算或重複算的列。</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#1F3A36;border-radius:16px;padding:22px 30px">
+<p style="font-size:24px;font-weight:700;color:#F2B83B">三、結果合不合理</p>
+<h3 style="font-size:32px;font-weight:700;line-height:1.3;color:#FAF7F0">9 位相符，1 位金額不符</h3>
+<p style="font-size:26px;line-height:1.5;color:#CFE0DB">王O儀：次數都是 10，金額 310 對 300，差 10 元。</p>
+</div>
+</div>
+<img src="簡報原始檔/assets/5ad6e17cdbf3af7bf734c3709eb196ab.png" alt="示範資料版工具的「不相符名單」工作表：共 1 位用戶不相符，王O儀金額不符，清冊部分負擔費用 310、交通車金額 300、金額差 -10" style="align-self:center;width:1400px;height:302px;object-fit:contain;background:#FFFFFF;border:1px solid #CFC6B2;border-radius:8px">
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#5C6B67">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#5C6B67">23 / 28</p></div>
+<aside>【時間】38:00–39:30（1 分 30 秒）
+【重點】
+・呼應案例一的「最不能省的一步」。這次驗算做了三層：
+・一、已知答案：起手式裡給的例子，尤O章清冊兩列 14 次加 2 次是 16 次；交通車資料數出來也是 16 列。對上了。
+・二、總數：清冊次數合計 50，交通車列數也是 50，人數都是 10 位。總數對得上，至少代表沒有整列漏掉。這是最便宜的檢查，任何比對都該先做。
+・三、結果合不合理：10 位裡 9 位相符，只有王O儀金額差 10 元（次數相同，清冊 310、交通車 300）。這種「只差一點點」的結果比較可信；如果十個人全部不符，通常是公式或資料清理出問題，不是真的都報錯。
+・下方畫面是示範資料版工具的「不相符名單」：打開檔案就會先看到這一張。
+・補充我們實際多做的兩件事：請 AI 用另一種方法獨立再算一次，兩邊結果一致；另外故意改資料測了三種情況（少一趟、只出現在清冊、只出現在交通車），確認都會被列出來。
+・提醒：工具只負責找出「不相符」，差的那 10 元是哪一趟、為什麼，還是要人去查。
+【說明】截圖取自 交通車趟次核銷比對_示範資料版.xlsx（姓名已遮蔽、其餘個資為虛構代號），由試算表軟體輸出的工作表畫面，不是 Excel 視窗的螢幕截圖。</aside>
+</section>
+<section id="locate" data-transition="fade" style="background:#F0EBDD;color:#1F3A36;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;flex-direction:row;gap:16px;align-items:center">
+<p style="font-size:24px;font-weight:700;color:#FAF7F0;background:#B4481A;padding:4px 20px;border-radius:40px">教學重點</p>
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#B4481A">案例二｜追問 AI</p>
+</div>
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">Excel 找資料的兩種方式</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FAF7F0;border-top:12px solid #1F6B5F;border-radius:16px;padding:32px 40px">
+<h3 style="font-size:40px;font-weight:700;line-height:1.2;color:#1F6B5F">用欄位位置</h3>
+<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:28px;line-height:1.5;background:#1F3A36;color:#F4EFE3;padding:16px 24px;border-radius:12px">「K 欄，第 6 列開始」</p>
+<ul style="font-size:28px;line-height:1.6;color:#1F3A36">
+<li>公式短，好懂，好教</li>
+<li>匯出格式不變就一直能用</li>
+<li>版面一變會抓到別欄，而且不會報錯</li>
+</ul>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FAF7F0;border-top:12px solid #B4481A;border-radius:16px;padding:32px 40px">
+<h3 style="font-size:40px;font-weight:700;line-height:1.2;color:#B4481A">用項目名稱</h3>
+<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:28px;line-height:1.5;background:#1F3A36;color:#F4EFE3;padding:16px 24px;border-radius:12px">「標題叫『次數』的那一欄」</p>
+<ul style="font-size:28px;line-height:1.6;color:#1F3A36">
+<li>欄位順序變了也對得上</li>
+<li>公式比較長</li>
+<li>標題改名或含換行會找不到，但會直接顯示錯誤</li>
+</ul>
+</div>
+</div>
+<p style="font-size:30px;font-weight:700;line-height:1.5;color:#FAF7F0;background:#1F3A36;border-radius:16px;padding:24px 36px">我們的工具用的是位置：清冊的 C、K、N 欄，交通車的 B、K 欄。它不會去讀標題文字。</p>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#5C6B67">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#5C6B67">24 / 28</p></div>
+<aside>【時間】39:30–41:00（1 分 30 秒）
+【重點】這是案例二最重要的觀念，放慢講。
+・工具做完、結果也對了之後，我們回頭問了 AI 一句：「我們在定位欄位，是透過欄位還是項目名稱？」
+・AI 的回答：是透過欄位位置。工具只認「清冊的 C 欄、K 欄、N 欄，第 6 列起」和「交通車的 B 欄、K 欄，第 2 列起」，完全不讀標題文字。
+・請學員回想起手式：我們自己就是寫「C 欄姓名、K 欄次數、N 欄部分負擔費用」，所以 AI 照著用位置。你怎麼描述資料，AI 就怎麼找資料。
+・兩種方式比較：
+　用位置：公式短、好懂。只要匯出檔版面不變就沒事。風險是平台哪天多一欄，工具會照樣去抓 K 欄，抓到別的數字也不會報錯，只會默默算錯。
+　用名稱：先在標題列找到「次數」在第幾欄，再去抓那一欄。欄位順序變了也沒關係。代價是公式變長，而且標題一改名、或標題裡有換行（清冊的「部分負擔費用」就有換行）就會找不到；不過找不到時會直接顯示錯誤，不會默默算錯。
+・重點句：「會報錯的錯誤比不會報錯的錯誤安全。」呼應案例一「AI 會錯，而且不會報錯」。
+・沒有哪一種比較好，要看情境。下一張講怎麼選。</aside>
+</section>
+<section id="locate-choose" data-transition="fade" style="background:#F0EBDD;color:#1F3A36;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;flex-direction:row;gap:16px;align-items:center">
+<p style="font-size:24px;font-weight:700;color:#FAF7F0;background:#B4481A;padding:4px 20px;border-radius:40px">教學重點</p>
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;color:#B4481A">案例二｜怎麼選</p>
+</div>
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">看情境決定用哪一種</h2>
+</div>
+<div style="display:flex;flex-direction:column;gap:0px">
+<div style="display:flex;flex-direction:row;gap:32px;align-items:baseline;border-top:1px solid #B9AE96;padding:16px 0px">
+<p style="flex:1;font-size:30px;line-height:1.45">匯出格式固定，每個月都是同一種報表</p>
+<p style="width:640px;font-size:30px;font-weight:700;line-height:1.45;color:#1F6B5F">用位置，再加一格標題檢查</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:baseline;border-top:1px solid #B9AE96;padding:16px 0px">
+<p style="flex:1;font-size:30px;line-height:1.45">欄位常增減，或不同單位給的格式不一樣</p>
+<p style="width:640px;font-size:30px;font-weight:700;line-height:1.45;color:#B4481A">用名稱</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:baseline;border-top:1px solid #B9AE96;border-bottom:1px solid #B9AE96;padding:16px 0px">
+<p style="flex:1;font-size:30px;line-height:1.45">公式要教給同事，或自己日後要看得懂</p>
+<p style="width:640px;font-size:30px;font-weight:700;line-height:1.45;color:#1F6B5F">用位置</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:700;color:#1F6B5F">拿到公式後，追問這一句</p>
+<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace;font-size:26px;line-height:1.6;background:#1F3A36;color:#F4EFE3;padding:24px 32px;border-radius:16px">你的公式是用欄位位置，還是用標題名稱來找資料？<br>如果匯出檔多了一欄，結果會怎樣？</p>
+</div>
+<div style="width:640px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:700;color:#1F6B5F">標題檢查是什麼</p>
+<p style="font-size:26px;line-height:1.6;background:#FAF7F0;border-radius:16px;padding:24px 32px">確認 K5 還是「次數」、N5 還是「部分負擔費用」。不是就顯示警告，先別相信結果。</p>
+</div>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#5C6B67">Excel × AI 長照行政課程</p><p style="font-size:24px;color:#5C6B67">25 / 28</p></div>
+<aside>【時間】41:00–42:00（1 分鐘）
+【重點】
+・三種情境各講一句：
+　格式固定的例行報表（像平台匯出的清冊）：用位置最單純。但加一格「標題檢查」當保險。
+　欄位常變、或資料來自不同單位：用名稱，讓公式自己去找欄位。
+　要教別人、要自己看得懂：用位置。看得懂的公式才修得動。
+・標題檢查的概念：另外放一格，確認關鍵欄位的標題還是原本那個名字（例如清冊 K5 是不是「次數」）。不是的話就顯示警告。這樣既保有位置的簡單，版面變動時也會被擋下來。
+・追問句請學員抄下來。任何 AI 給的公式都可以這樣問，重點是第二句「多了一欄會怎樣」，逼 AI 說出公式的弱點。
+・收束案例二：流程和案例一完全一樣（交代清楚、驗算），多學到一件事：做完之後要回頭問 AI「你是怎麼做的」。
+・轉場：到這裡兩個案例結束，接下來看同一招還能用在哪。
+【說明】目前的工具尚未加入標題檢查，這裡講的是建議做法。若之後加進工具，可補一張截圖。</aside>
+</section>
+<section id="more-uses" data-transition="fade" style="display:flex; flex-direction:column; gap:40px; padding:128px 128px 160px; background:#faf7f0">
+  <div style="display:flex; flex-direction:column; gap:12px">
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; letter-spacing:2px; color:#b4481a">延伸｜舉一反三</p>
+    <h2 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:64px; font-weight:700; line-height:1.15; color:#1f3a36">同一招還能用在哪</h2>
+  </div>
+  <div style="display:grid; gap:24px; grid-template-columns:1fr 1fr">
+    <div style="display:flex; flex-direction:row; gap:28px; align-items:center; padding:32px 40px; background:#fffdf8; border:1px solid #e2daca; border-radius:16px">
+      <x-icon name="GraduationCap" style="width:72px; height:72px; color:#b4481a"></x-icon>
+      <div style="display:flex; flex-direction:column; gap:6px; flex:1">
+        <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:40px; font-weight:700; line-height:1.2; color:#1f3a36">在職訓練時數</h3>
+        <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:28px; line-height:1.5; color:#3f5450">每人累計時數、還差多少</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:28px; align-items:center; padding:32px 40px; background:#fffdf8; border:1px solid #e2daca; border-radius:16px">
+      <x-icon name="Clock" style="width:72px; height:72px; color:#b4481a"></x-icon>
+      <div style="display:flex; flex-direction:column; gap:6px; flex:1">
+        <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:40px; font-weight:700; line-height:1.2; color:#1f3a36">健檢與合約到期</h3>
+        <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:28px; line-height:1.5; color:#3f5450">算到期日、提前提醒</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:28px; align-items:center; padding:32px 40px; background:#fffdf8; border:1px solid #e2daca; border-radius:16px">
+      <x-icon name="Users" style="width:72px; height:72px; color:#b4481a"></x-icon>
+      <div style="display:flex; flex-direction:column; gap:6px; flex:1">
+        <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:40px; font-weight:700; line-height:1.2; color:#1f3a36">志工時數</h3>
+        <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:28px; line-height:1.5; color:#3f5450">一筆一列變成一人一列</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:28px; align-items:center; padding:32px 40px; background:#fffdf8; border:1px solid #e2daca; border-radius:16px">
+      <x-icon name="Search" style="width:72px; height:72px; color:#b4481a"></x-icon>
+      <div style="display:flex; flex-direction:column; gap:6px; flex:1">
+        <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:40px; font-weight:700; line-height:1.2; color:#1f3a36">訂餐與請款核對</h3>
+        <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:28px; line-height:1.5; color:#3f5450">兩份名單互相比對，找出不符</p>
+      </div>
+    </div>
+  </div>
+  <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:30px; font-weight:700; line-height:1.5; color:#1f3a36">共通點：偶爾才做、每次都要重來的加總、查找與比對。</p>
+  <div style="position:absolute; right:128px; bottom:64px; left:128px; display:flex; flex-direction:row; justify-content:space-between">
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#5c6b67">Excel × AI 長照行政課程</p>
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#5c6b67">27 / 28</p>
+  </div>
+  <aside>【時間】45:00–47:00（2 分鐘） 【重點】 ・今天兩個案例背後只有兩個動作：依條件加總或計數、用一個欄位去另一張表查找。 ・四個例子各用一句話對應回今天學的： 　在職訓練時數：跟年度積分一樣，一筆一列加總成一人一列。 　健檢與合約到期：跟認證到期提醒一樣，算到期日、幾天內提醒。 　志工時數：同樣是加總。 　訂餐與請款核對：跟交通車核銷一樣，兩份名單比對找不符。 ・互動：請學員想一件自己手上「偶爾才做、每次都要重來」的事，點一兩位分享。 ・提醒：不管換成哪一件事，四樣東西都一樣：去識別化資料、白話規則、合作方式、已知答案。</aside>
+</section>
+<section id="recap" data-transition="fade" style="display:flex; flex-direction:column; gap:40px; padding:128px 128px 160px; background:#1f3a36">
+  <div style="display:flex; flex-direction:column; gap:12px">
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; letter-spacing:2px; color:#f2b83b">收尾</p>
+    <h2 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:64px; font-weight:700; line-height:1.15; color:#faf7f0">流程回顧與課後贈品</h2>
+  </div>
+  <div style="display:flex; flex-direction:row; gap:24px">
+    <div style="display:flex; flex-direction:column; gap:10px; flex:1; padding:32px 36px; background:#2b4d47; border-radius:16px">
+      <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; color:#f2b83b">第一步</p>
+      <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:40px; font-weight:700; line-height:1.2; color:#faf7f0">交代清楚</h3>
+      <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.5; color:#cfe0db">去識別化資料、條列規則、合作方式</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px; flex:1; padding:32px 36px; background:#2b4d47; border-radius:16px">
+      <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; color:#f2b83b">第二步</p>
+      <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:40px; font-weight:700; line-height:1.2; color:#faf7f0">一次做一步</h3>
+      <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.5; color:#cfe0db">AI 先給規劃，確認後逐步給公式</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px; flex:1; padding:32px 36px; background:#2b4d47; border-radius:16px">
+      <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; color:#f2b83b">第三步</p>
+      <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:40px; font-weight:700; line-height:1.2; color:#faf7f0">驗算修正</h3>
+      <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.5; color:#cfe0db">對照已知答案，不對就照實回報</p>
+    </div>
+  </div>
+  <div style="display:flex; flex-direction:row; gap:32px; align-items:center; padding:32px 40px; background:#faf7f0; border-radius:16px">
+    <div style="display:flex; flex-direction:column; gap:8px; flex:1">
+      <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; color:#b4481a">課後贈品</p>
+      <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:40px; font-weight:700; line-height:1.2; color:#1f3a36">機構免費長照積分分析乙次！</h3>
+      <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.5; color:#3f5450">含年度積分、積分落點分析以及換證預估。</p>
+    </div>
+    <p style="width:380px; padding:20px 24px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; line-height:1.5; text-align:center; color:#1f3a36; background:#f2b83b; border-radius:16px">【待填】贈品領取方式、報名與聯絡資訊</p>
+  </div>
+  <div style="position:absolute; right:128px; bottom:64px; left:128px; display:flex; flex-direction:row; justify-content:space-between">
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#a9bdb8">Excel × AI 長照行政課程</p>
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#a9bdb8">28 / 28</p>
+  </div>
+  <aside>【時間】47:00–50:00（3 分鐘） 【重點】 ・流程回顧（1 分鐘）：三步驟再念一次，各扣回今天做過的事。 　交代清楚：起手式的五個區塊。 　一次做一步：先看規劃，一次一條公式。 　驗算修正：用已知答案對照，不對就照實描述或貼截圖回去。 ・主張收尾：「不用背函數，把資料和規則講清楚，AI 寫公式，你負責驗算。」 ・贈品說明（30 秒）：完整版檢查表空白檔，貼上自己單位的平台匯出檔就能用。換證預估是附贈的完成品，一律說「預估」，最終以平台及主管機關審查為準。 ・個資再提醒一次：真實資料只貼進自己電腦裡的 Excel，不要貼給 AI。 ・問答（1 分 30 秒）。 【待填】贈品領取方式、後續課程報名方式、聯絡資訊。</aside>
+</section>
+</div></div>
+<div id="notes"></div>
+<div id="bar">
+  <button id="prev" aria-label="上一張">←</button>
+  <span id="count"></span>
+  <button id="next" aria-label="下一張">→</button>
+  <div id="progress"><div></div></div>
+  <button id="toggleNotes" class="hide-sm">講稿（N）</button>
+  <button id="fs" class="hide-sm">全螢幕（F）</button>
+</div>
+<script>
+(function () {
+  var stage = document.getElementById('stage');
+  var slides = Array.prototype.slice.call(stage.querySelectorAll(':scope > section'));
+  var notes = document.getElementById('notes');
+  var count = document.getElementById('count');
+  var bar = document.querySelector('#progress > div');
+  var i = 0;
+
+  // data-crop="縮放 x% y%"：照編輯器的裁切方式顯示
+  stage.querySelectorAll('img[data-crop]').forEach(function (img) {
+    var p = img.getAttribute('data-crop').split(/\s+/);
+    img.style.objectFit = 'cover';
+    if (p.length >= 3) img.style.objectPosition = p[1] + ' ' + p[2];
+  });
+
+  function fit() {
+    var vw = window.innerWidth, vh = window.innerHeight - 48;
+    var s = Math.min(vw / 1920, vh / 1080);
+    stage.style.transform = 'scale(' + s + ')';
+    stage.style.margin = ((1080 * s - 1080) / 2) + 'px ' + ((1920 * s - 1920) / 2) + 'px';
+  }
+
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function (el, k) { el.classList.toggle('active', k === i); });
+    count.textContent = (i + 1) + ' / ' + slides.length;
+    bar.style.width = ((i + 1) / slides.length * 100) + '%';
+    var a = slides[i].querySelector('aside');
+    notes.textContent = a ? a.textContent.trim() : '（這張沒有講稿）';
+    if (location.hash !== '#' + (i + 1)) history.replaceState(null, '', '#' + (i + 1));
+  }
+
+  function fromHash() {
+    var n = parseInt((location.hash || '').slice(1), 10);
+    show(isNaN(n) ? 0 : n - 1);
+  }
+
+  document.getElementById('prev').onclick = function () { show(i - 1); };
+  document.getElementById('next').onclick = function () { show(i + 1); };
+  document.getElementById('toggleNotes').onclick = function () { document.body.classList.toggle('show-notes'); };
+  document.getElementById('fs').onclick = function () {
+    if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen();
+  };
+  document.getElementById('viewport').addEventListener('click', function (e) {
+    if (e.target.closest('a')) return;
+    show(e.clientX < window.innerWidth / 3 ? i - 1 : i + 1);
+  });
+  document.addEventListener('keydown', function (e) {
+    var k = e.key;
+    if (k === 'ArrowRight' || k === 'PageDown' || k === ' ' || k === 'Enter') { e.preventDefault(); show(i + 1); }
+    else if (k === 'ArrowLeft' || k === 'PageUp' || k === 'Backspace') { e.preventDefault(); show(i - 1); }
+    else if (k === 'Home') show(0);
+    else if (k === 'End') show(slides.length - 1);
+    else if (k === 'n' || k === 'N') document.body.classList.toggle('show-notes');
+    else if (k === 'f' || k === 'F') document.getElementById('fs').onclick();
+  });
+  var x0 = null;
+  document.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 50) show(dx < 0 ? i + 1 : i - 1);
+    x0 = null;
+  });
+  window.addEventListener('resize', fit);
+  window.addEventListener('hashchange', fromHash);
+  fit();
+  fromHash();
+})();
+</script>
+</body>
+</html>
