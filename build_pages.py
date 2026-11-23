@@ -39,32 +39,32 @@ page = f"""<!doctype html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?{fonts}&display=swap">
 <style>
-:root {{ --bg:#141c1a; --fg:#e8efed; --muted:#9fb3ae; --accent:#F2B83B; }}
+:root {{ --bg:#dcdddd; --fg:#ffffff; --muted:#dcdddd; --accent:#248dc5; }}
 html, body {{ margin:0; height:100%; background:var(--bg); color:var(--fg);
   font-family:'Noto Sans TC', Arial, sans-serif; overflow:hidden; }}
 #viewport {{ position:fixed; inset:0 0 48px 0; display:flex; align-items:center; justify-content:center; }}
 #stage {{ position:relative; width:1920px; height:1080px; transform-origin:center center;
-  box-shadow:0 10px 40px rgba(0,0,0,.45); overflow:hidden; background:#FAF7F0; }}
+  overflow:hidden; background:#ffffff; }}
 #stage > section {{ position:absolute; inset:0; width:1920px; height:1080px; box-sizing:border-box;
-  display:none !important; overflow:hidden; color:#1F3A36; }}
+  display:none !important; overflow:hidden; color:#2a2a2a; }}
 #stage > section.active {{ display:flex !important; }}
 #stage section * {{ margin:0; box-sizing:border-box; }}
 #stage section ul {{ padding-left:1.2em; list-style:disc; }}
 #stage section table {{ border-collapse:collapse; width:100%; }}
-#stage section th, #stage section td {{ padding:14px 20px; border-bottom:1px solid #CFC6B2; vertical-align:top; }}
+#stage section th, #stage section td {{ padding:14px 20px; border-bottom:1px solid #9fa0a0; vertical-align:top; }}
 #stage section img {{ display:block; object-fit:cover; }}
 #stage section .crop-frame {{ overflow:hidden; display:block; }}
 #stage section aside {{ display:none; }}
 #bar {{ position:fixed; left:0; right:0; bottom:0; height:48px; display:flex; align-items:center;
-  gap:12px; padding:0 16px; font-size:15px; color:var(--muted); background:#0d1312; }}
-#bar button {{ background:#22302d; color:var(--fg); border:0; border-radius:6px; padding:6px 12px;
+  gap:12px; padding:0 16px; font-size:15px; color:var(--muted); background:#2a2a2a; }}
+#bar button {{ background:#3d3d3d; color:var(--fg); border:0; border-radius:0; padding:6px 12px;
   font:inherit; cursor:pointer; }}
-#bar button:hover {{ background:#2e403c; }}
+#bar button:hover {{ background:#248dc5; }}
 #count {{ min-width:72px; text-align:center; color:var(--fg); }}
-#progress {{ flex:1; height:4px; background:#22302d; border-radius:2px; overflow:hidden; }}
+#progress {{ flex:1; height:4px; background:#3d3d3d; border-radius:2px; overflow:hidden; }}
 #progress > div {{ height:100%; background:var(--accent); width:0; transition:width .2s; }}
 #notes {{ position:fixed; right:16px; bottom:60px; width:min(560px, calc(100% - 32px)); max-height:45vh;
-  overflow:auto; background:#0d1312; color:var(--fg); border:1px solid #2e403c; border-radius:10px;
+  overflow:auto; background:#2a2a2a; color:var(--fg); border:1px solid #3d3d3d; border-radius:0;
   padding:16px 18px; font-size:15px; line-height:1.7; white-space:pre-wrap; display:none; }}
 body.show-notes #notes {{ display:block; }}
 @media (max-width: 600px) {{ #bar .hide-sm {{ display:none; }} }}
