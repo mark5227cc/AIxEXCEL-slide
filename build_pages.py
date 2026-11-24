@@ -112,6 +112,19 @@ body.show-notes #notes {{ display:block; }}
       ';object-position:' + pct(x) + ' ' + pct(y));
   }});
 
+  // 外部連結一律開新分頁；投影片只有一個外部連結時，該張的圖片也可點擊開啟同一個網址。
+  slides.forEach(function (s) {{
+    var links = s.querySelectorAll('a[href^="http"]');
+    links.forEach(function (a) {{ a.target = '_blank'; a.rel = 'noopener'; }});
+    if (links.length !== 1) return;
+    var href = links[0].href;
+    s.querySelectorAll('img').forEach(function (img) {{
+      img.style.cursor = 'pointer';
+      img.title = href;
+      img.addEventListener('click', function (e) {{ e.stopPropagation(); window.open(href, '_blank', 'noopener'); }});
+    }});
+  }});
+
   function fit() {{
     var vw = window.innerWidth, vh = window.innerHeight - 48;
     var s = Math.min(vw / 1920, vh / 1080);
