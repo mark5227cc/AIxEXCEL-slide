@@ -36,6 +36,8 @@
     "step-5b",
     "stuck",
     "verify",
+    "verify-how",
+    "case2-why",
     "case2",
     "case2-brief",
     "case2-findings",
@@ -61,8 +63,8 @@
       "start": "case1-task"
     },
     "s4": {
-      "description": "案例二：交通車趟次核銷比對，呈現與 AI 一起設計比對工具的過程，以及用欄位位置或項目名稱找資料的差別。",
-      "start": "case2"
+      "description": "案例二：交通車趟次核銷比對，先說明核銷前要對哪些資料，再呈現與 AI 一起設計比對工具的過程，以及用欄位位置或項目名稱找資料的差別。",
+      "start": "case2-why"
     },
     "s5": {
       "before": null,
