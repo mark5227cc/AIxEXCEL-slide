@@ -1,37 +1,38 @@
-<section id="case2" data-transition="fade" style="background:#248DC5; color:#FFFFFF; font-family:'Noto Sans TC', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:48px">
-<div style="display:flex; flex-direction:column; gap:12px">
-<p style="font-size:24px; font-weight:700; letter-spacing:2px; color:#248DC5; background:#FFFFFF; padding:4px 20px; border-radius:9999px; align-self:flex-start">案例二｜任務說明</p>
-<h2 style="font-size:64px; font-weight:700; line-height:1.15">交通車趟次核銷比對</h2>
-</div>
-<div style="display:flex; flex-direction:row; gap:32px; align-items:center">
-<div style="width:620px; display:flex; flex-direction:column; gap:24px">
-<div style="display:flex; flex-direction:column; gap:8px; background:#0C447C; border-radius:0; padding:32px 36px">
-<h3 style="font-size:34px; font-weight:700; line-height:1.2">照顧組合服務費用項目清冊</h3>
-<p style="font-size:26px; line-height:1.5; color:#FFFFFF">平台匯出。同一位個案可能有好幾列，次數要加總。</p>
-</div>
-<div style="display:flex; flex-direction:column; gap:8px; background:#0C447C; border-radius:0; padding:32px 36px">
-<h3 style="font-size:34px; font-weight:700; line-height:1.2">交通車系統資料</h3>
-<p style="font-size:26px; line-height:1.5; color:#FFFFFF">交通車系統匯出。一趟一列，次數要用數的。</p>
-</div>
-</div>
-<p style="font-size:96px; font-weight:700; color:#FFFFFF">→</p>
-<div style="flex:1; display:flex; flex-direction:column; gap:16px; background:#FFFFFF; border-radius:0; padding:40px 44px">
-<p style="font-size:24px; font-weight:700; color:#248DC5">要做出來的表</p>
-<h3 style="font-size:44px; font-weight:700; line-height:1.2; color:#2A2A2A">不相符名單</h3>
-<ul style="font-size:30px; line-height:1.6; color:#2A2A2A">
-<li>每位用戶的次數是否相同</li>
-<li>每位用戶的金額是否相同</li>
-<li>只列出對不上的人</li>
-</ul>
-</div>
-</div>
-<div style="position:absolute; left:128px; right:128px; bottom:64px; display:flex; flex-direction:row; justify-content:space-between"><p style="font-size:24px; color:#FFFFFF">Excel × AI 長照行政課程</p><div style="flex:1"></div><p style="font-size:24px; color:#FFFFFF">22 / 35</p><div style="width:32px"></div><div style="padding-top:4px"><img src="/_blob/5fa7414a66b256f6504322c5f4260900" alt="GOGO Care 台灣長照學習平台" style="width:490px; height:28px; object-fit:contain"></div></div>
-<aside>【時間】32:00–33:00（1 分鐘）
-【重點】
-・承接上一頁的三件事：與其一位一位翻，不如請 AI 做一個比對工具。流程和案例一一模一樣。
-・兩份資料長得不一樣：清冊是「一位個案一列（有時多列）」，直接寫次數；交通車系統是「一趟一列」，次數要自己數。
-・任務一句話：把兩份資料都整理成一人一列，比對次數和金額，只列出對不上的人。
-・這段對應學習目標 03「AI 協助校對」：核銷比對本質上就是找出不符項目。
-・預告：這個案例不帶學員逐步實作，而是完整呈現「我們實際怎麼跟 AI 一起把工具做出來」，重點在過程中的判斷。
-【個資】本案例所有畫面只能使用去識別化示範資料。</aside>
+<section id="case2" data-transition="fade" style="display:flex; flex-direction:column; gap:48px; padding:128px 128px 160px; background:#248dc5">
+  <div style="display:flex; flex-direction:column; gap:12px">
+    <p style="align-self:start; padding:4px 20px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; letter-spacing:2px; color:#248dc5; background:#ffffff; border-radius:256px">案例二｜任務說明</p>
+    <h2 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:64px; font-weight:700; line-height:1.15; color:#ffffff">交通車趟次核銷比對</h2>
+  </div>
+  <div style="display:flex; flex-direction:row; gap:32px; align-items:center">
+    <div style="width:620px; display:flex; flex-direction:column; gap:24px">
+      <div style="display:flex; flex-direction:column; gap:8px; padding:32px 36px; background:#0c447c; border-radius:0">
+        <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:34px; font-weight:700; line-height:1.2; color:#ffffff">照顧組合服務費用項目清冊</h3>
+        <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.5; color:#ffffff">衛福部平台匯出。同一位個案可能有好幾列，次數要加總。</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px; padding:32px 36px; background:#0c447c; border-radius:0">
+        <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:34px; font-weight:700; line-height:1.2; color:#ffffff">交通車系統資料</h3>
+        <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.5; color:#ffffff">交通車系統匯出。一趟一列，次數要用數的。</p>
+      </div>
+    </div>
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:96px; font-weight:700; color:#ffffff">→</p>
+    <div style="display:flex; flex-direction:column; gap:16px; flex:1; padding:40px 44px; background:#ffffff; border-radius:0">
+      <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; color:#248dc5">要做出來的表</p>
+      <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:44px; font-weight:700; line-height:1.2; color:#2a2a2a">不相符名單</h3>
+      <ul style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:30px; line-height:1.6; color:#2a2a2a">
+        <li>每位用戶的次數是否相同</li>
+        <li>每位用戶的金額是否相同</li>
+        <li>只列出對不上的人</li>
+      </ul>
+    </div>
+  </div>
+  <div style="position:absolute; right:128px; bottom:64px; left:128px; display:flex; flex-direction:row; justify-content:space-between">
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#ffffff">Excel × AI 長照行政課程</p>
+    <div style="flex:1"></div>
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#ffffff">22 / 35</p>
+    <div style="flex:0 1 32px"></div>
+    <div style="display:flex; flex-direction:column; padding:4px 0 0">
+      <img src="/_blob/5fa7414a66b256f6504322c5f4260900" alt="GOGO Care 台灣長照學習平台" style="width:490px; height:28px; object-fit:contain">
+    </div>
+  </div>
+  <aside>【時間】32:00–33:00（1 分鐘） 【重點】 ・承接上一頁的三件事：與其一位一位翻，不如請 AI 做一個比對工具。流程和案例一一模一樣。 ・兩份資料長得不一樣：清冊是「一位個案一列（有時多列）」，直接寫次數；交通車系統是「一趟一列」，次數要自己數。 ・任務一句話：把兩份資料都整理成一人一列，比對次數和金額，只列出對不上的人。 ・這段對應學習目標 03「AI 協助校對」：核銷比對本質上就是找出不符項目。 ・預告：這個案例不帶學員逐步實作，而是完整呈現「我們實際怎麼跟 AI 一起把工具做出來」，重點在過程中的判斷。 【個資】本案例所有畫面只能使用去識別化示範資料。</aside>
 </section>
