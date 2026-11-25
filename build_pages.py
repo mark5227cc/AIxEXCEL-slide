@@ -68,6 +68,9 @@ html, body {{ margin:0; height:100%; background:var(--bg); color:var(--fg);
   overflow:auto; background:#2a2a2a; color:var(--fg); border:1px solid #3d3d3d; border-radius:0;
   padding:16px 18px; font-size:15px; line-height:1.7; white-space:pre-wrap; display:none; }}
 body.show-notes #notes {{ display:block; }}
+body.fs #bar {{ display:none; }}
+body.fs #viewport {{ inset:0; }}
+body.fs #notes {{ bottom:16px; }}
 @media (max-width: 600px) {{ #bar .hide-sm {{ display:none; }} }}
 </style>
 </head>
@@ -81,7 +84,6 @@ body.show-notes #notes {{ display:block; }}
   <span id="count"></span>
   <button id="next" aria-label="下一張">→</button>
   <div id="progress"><div></div></div>
-  <button id="toggleNotes" class="hide-sm">講稿（N）</button>
   <button id="fs" class="hide-sm">全螢幕（F）</button>
 </div>
 <script>
@@ -127,7 +129,7 @@ body.show-notes #notes {{ display:block; }}
   }});
 
   function fit() {{
-    var vw = window.innerWidth, vh = window.innerHeight - 48;
+    var vw = window.innerWidth, vh = window.innerHeight - (document.fullscreenElement ? 0 : 48);
     var s = Math.min(vw / 1920, vh / 1080);
     stage.style.transform = 'scale(' + s + ')';
     stage.style.margin = ((1080 * s - 1080) / 2) + 'px ' + ((1920 * s - 1920) / 2) + 'px';
@@ -150,7 +152,6 @@ body.show-notes #notes {{ display:block; }}
 
   document.getElementById('prev').onclick = function () {{ show(i - 1); }};
   document.getElementById('next').onclick = function () {{ show(i + 1); }};
-  document.getElementById('toggleNotes').onclick = function () {{ document.body.classList.toggle('show-notes'); }};
   document.getElementById('fs').onclick = function () {{
     if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen();
   }};
@@ -174,6 +175,10 @@ body.show-notes #notes {{ display:block; }}
     var dx = e.changedTouches[0].clientX - x0;
     if (Math.abs(dx) > 50) show(dx < 0 ? i + 1 : i - 1);
     x0 = null;
+  }});
+  document.addEventListener('fullscreenchange', function () {{
+    document.body.classList.toggle('fs', !!document.fullscreenElement);
+    fit();
   }});
   window.addEventListener('resize', fit);
   window.addEventListener('hashchange', fromHash);
