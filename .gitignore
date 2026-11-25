@@ -5,3 +5,5 @@
 .xlsx
 # Excel 暫存檔
 ~$*
+# LibreOffice 鎖定檔
+.~lock.*#

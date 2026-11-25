@@ -1,33 +1,31 @@
-<section id="step-3" data-transition="fade" style="background:#DCDDDD; color:#2A2A2A; font-family:'Noto Sans TC', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:32px">
-<div style="display:flex; flex-direction:column; gap:12px"><div style="display:flex; flex-direction:row; gap:16px; align-items:center"><p style="font-size:24px; font-weight:700; color:#FFFFFF; background:#A066CB; padding:4px 20px; border-radius:9999px">討論示範</p><p style="font-size:24px; font-weight:700; letter-spacing:2px; color:#FFFFFF; background:#248DC5; padding:4px 20px; border-radius:9999px; align-self:flex-start">案例一｜步驟 3｜規則 3</p></div><h2 style="font-size:64px; font-weight:700; line-height:1.15">品質倫理法規：至少 24 點</h2></div>
-<div style="display:flex; flex-direction:row; gap:48px">
-<div style="width:920px; display:flex; flex-direction:column; gap:16px">
-<p style="font-size:24px; font-weight:700; color:#0C447C">我怎麼問｜第一問：三種課加起來</p>
-<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace; font-size:26px; line-height:1.55; background:#0C447C; color:#FFFFFF; padding:20px 28px; border-radius:0">「貼上區」E 欄是身分證字號，K 欄是課程屬性，R 欄是有效積分。<br>「人員總表」C 欄是身分證字號。<br>我想在人員總表 V6 算出這個人「專業品質、專業倫理、專業法規」三種課的有效積分合計。<br>例如 Z900000001 應該是 70.57。</p>
-<p style="font-size:24px; font-weight:700; color:#0C447C">我怎麼問｜第二問：夠不夠 24 點</p>
-<p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace; font-size:26px; line-height:1.55; background:#0C447C; color:#FFFFFF; padding:20px 28px; border-radius:0">V6 是品質倫理法規合計。我想在 W6 顯示：滿 24 點就顯示「✓」，不到就顯示「尚缺」和還差幾點。</p>
-<p style="font-size:26px; line-height:1.5; color:#2A2A2A; background:#FFFFFF; border-radius:0; padding:14px 24px"><b>拿到回答後：</b>先對 Z900000001 是不是 70.57。最常見的錯是只加到其中一種課。</p>
-</div>
-<div style="flex:1; display:flex; flex-direction:column; gap:18px; background:#FFFFFF; border-radius:0; padding:36px 40px">
-<h3 style="font-size:36px; font-weight:700; line-height:1.2; color:#0C447C">驗算：合計與判定</h3>
-<div style="display:flex; flex-direction:row; justify-content:space-between; align-items:baseline; border-top:1px solid #9FA0A0; padding:14px 0px 0px 0px"><p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace; font-size:30px">Z900000001</p><p style="font-size:32px; font-weight:700">70.57　✓</p></div><div style="display:flex; flex-direction:row; justify-content:space-between; align-items:baseline; border-top:1px solid #9FA0A0; padding:14px 0px 0px 0px"><p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace; font-size:30px">Z900000002</p><p style="font-size:32px; font-weight:700">14.68　尚缺 9.32</p></div><div style="display:flex; flex-direction:row; justify-content:space-between; align-items:baseline; border-top:1px solid #9FA0A0; padding:14px 0px 0px 0px"><p style="font-family:'LXGW WenKai Mono TC', 'Courier New', monospace; font-size:30px">Z900000003</p><p style="font-size:32px; font-weight:700">9.18　尚缺 14.82</p></div>
-<p style="font-size:26px; line-height:1.5; color:#2A2A2A">超過 36 點只採計 36 點。Z900000001 的 70.57 點，到步驟 6 算總積分時只會算 36。</p>
-</div>
-</div>
-<div style="position:absolute; left:128px; right:128px; bottom:64px; display:flex; flex-direction:row; justify-content:space-between"><p style="font-size:24px; color:#2A2A2A">Excel × AI 長照行政課程</p><p style="font-size:24px; color:#2A2A2A">12 / 30</p></div>
-<aside>【時間】18:00–20:30（2 分 30 秒，講師講解）
-【對應規則】規則 3：品質＋倫理＋法規合計至少 24 點；超過 36 點只採計 36 點。
-【重點】
-・照三段講：我怎麼問 → 拿到回答後看什麼 → 驗算。
-・拆解第一問：兩張工作表各有哪些欄位、要加總的是哪三種課、結果放哪一格、最後附一個已知答案。
-・「例如 Z900000001 應該是 70.57」這句很重要：AI 會用它來檢查自己的公式，你也用它來檢查 AI。
-・「一次只問一件事」：合計和判定分兩次問，每次拿一條公式，確認了再問下一個。
-・拿到回答後：最常見的狀況是 AI 只加了其中一種課，或用了新版函數。數字對不上，就用「卡關怎麼辦」那張的句子回報。
-・驗算三位：Z900000001 是 70.57、✓；Z900000002 是 14.68、尚缺 9.32；Z900000003 是 9.18、尚缺 14.82。
-・「超過 36 只採計 36」先不在這一步處理，只提醒有這條上限，步驟 6 會用到。
-・這一步背後是 SUMIFS，可以點出名字，但不需要解釋公式。
-【措辭規範】說「尚缺」「待補」，不說「不合格」「違規」。
-【說明】驗算值取自示範資料版檢查表人員總表 V、W 欄，並以貼上區原始資料重算確認。
-【備援公式】不上投影片；實測後把 AI 實際回覆的 V6、W6 公式記在這裡，AI 給的寫法不同時對照用。
-【待辦】可補 AI 實際回覆的截圖，以及人員總表 C5:W10 相關欄位的結果截圖。</aside>
+<section id="step-3" data-transition="fade" style="background:#f8f8f8">
+  <div id="e1-180qpyn" style="position:absolute; right:128px; bottom:64px; left:128px; display:flex; flex-direction:row; justify-content:space-between">
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#2a2a2a">Excel × AI 長照行政課程</p>
+    <div style="flex:1"></div>
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#2a2a2a">13 / 35</p>
+    <div style="flex:0 1 32px"></div>
+    <div style="display:flex; flex-direction:column; padding:4px 0 0">
+      <img src="/_blob/f4065fe51ca6d9abe59760fb005155df" alt="GOGO Care 台灣長照學習平台" style="width:490px; height:28px; object-fit:contain">
+    </div>
+  </div>
+  <div id="p46a1de04c3d3r0-c59c95d2" style="position:absolute; top:128px; left:128px; width:1664px; display:flex; flex-direction:column; gap:12px">
+    <div style="display:flex; flex-direction:row; gap:16px; align-items:center">
+      <p style="padding:4px 20px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; color:#ffffff; background:#a066cb; border-radius:256px">討論示範</p>
+      <p style="align-self:start; padding:4px 20px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; letter-spacing:2px; color:#ffffff; background:#248dc5; border-radius:256px">案例一｜步驟 3</p>
+    </div>
+    <h2 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:64px; font-weight:700; line-height:1.15; color:#2a2a2a">品質倫理法規：至少 24 點且不能超過 36 點</h2>
+  </div>
+  <div id="p7bc57a54cfb9c0-462a7551" style="position:absolute; top:276px; left:128px; width:920px; display:flex; flex-direction:column; gap:16px">
+    <p style="width:759px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; color:#0c447c">我怎麼問｜第一問：三種課加起來</p>
+    <p style="width:762px; padding:20px 28px; font-family:'LXGW WenKai Mono TC', 'Courier New', monospace; font-size:26px; line-height:1.55; color:#ffffff; background:#0c447c; border-radius:0">「貼上區」E 欄是身分證字號，K 欄是課程屬性，R 欄是有效積分。<br>「人員總表」C 欄是身分證字號。<br>我想在人員總表 V6 算出這個人「專業品質、專業倫理、專業法規」三種課的有效積分合計。<br>例如 Z900000001 應該是 71.77。</p>
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; color:#0c447c">我怎麼問｜第二問：夠不夠 24 點</p>
+    <p style="width:760px; padding:20px 28px; font-family:'LXGW WenKai Mono TC', 'Courier New', monospace; font-size:26px; line-height:1.55; color:#ffffff; background:#0c447c; border-radius:0">V6 是品質倫理法規合計。我想在 W6 顯示：滿 24 點就顯示「✓」，不到就顯示「尚缺」和還差幾點。</p>
+    <p style="width:758px; padding:14px 24px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.5; color:#2a2a2a; background:#ffffff; border-radius:0"><b>拿到回答後：</b>先對 Z900000001 是不是 71.77。最常見的錯是只加到其中一種課。</p>
+  </div>
+  <img src="/_blob/d130f9e5301f58b2b657110b72b6cf61" alt="示範資料版人員總表的品質倫理法規欄：Z900000001 是 71.77、✓；Z900000002 是 14.68、尚缺 9.32；Z900000003 是 9.18、尚缺 14.82" id="p7bc57a54cfb9c1_1-462a7551" data-crop="1.0692 96.828% 57.881%" style="position:absolute; top:322.03px; left:1528.31px; width:298.19px; height:592.89px; background:#ffffff; border:16px solid #eee800; border-radius:0">
+  <p id="61ddcbd6" style="position:absolute; top:276px; left:1528.3px; width:308.89px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; color:#0c447c">結果｜人員總表 V、W 欄</p>
+  <img src="/_blob/d8cc559754c0b1ac21254ec117fa9605" alt="image.png" id="55f14daf" data-crop="1 0% 50%" style="position:absolute; top:calc(50% + 81.52px); left:calc(50% + 126.97px); width:337.11px; height:599px; transform:translate(-50%, -50%)">
+  <img src="/_blob/d8cc559754c0b1ac21254ec117fa9605" alt="image.png" id="b102f562" data-crop="1.0103 100% 0%" style="position:absolute; top:calc(50% + 78.46px); left:calc(50% + 404.14px); width:176.49px; height:592.88px; transform:translate(-50%, -50%)">
+  <p id="f22c2a9f" style="position:absolute; top:276px; left:923.05px; width:529.34px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; color:#248dc5">比對｜貼上區 E、K、R 欄</p>
+  <aside>【時間】18:00–20:30（2 分 30 秒，講師講解） 【對應規則】規則 3：品質＋倫理＋法規合計至少 24 點；超過 36 點只採計 36 點。 【重點】 ・畫面只講跟 AI 的互動（左邊兩個提問與拿到回答後要對什麼），結果用右邊的截圖展示。 ・拆解第一問：兩張工作表各有哪些欄位、要加總的是哪三種課、結果放哪一格、最後附一個已知答案。 ・「例如 Z900000001 應該是 71.77」這句很重要：AI 會用它來檢查自己的公式，你也用它來檢查 AI。 ・「一次只問一件事」：合計和判定分兩次問，每次拿一條公式，確認了再問下一個。 ・拿到回答後：最常見的狀況是 AI 只加了其中一種課，或用了新版函數。數字對不上，就用「卡關怎麼辦」那張的句子回報。 ・指著右邊截圖口頭驗算三位：Z900000001 是 71.77、✓；Z900000002 是 14.68、尚缺 9.32；Z900000003 是 9.18、尚缺 14.82。 ・「超過 36 只採計 36」先不在這一步處理，只提醒有這條上限，步驟 6 會用到。 ・這一步背後是 SUMIFS，可以點出名字，但不需要解釋公式。 【措辭規範】說「尚缺」「待補」，不說「不合格」「違規」。 【說明】驗算值取自示範資料版檢查表人員總表 V、W 欄，並以貼上區原始資料重算確認。 【備援公式】不上投影片；實測後把 AI 實際回覆的 V6、W6 公式記在這裡，AI 給的寫法不同時對照用。 【待辦】可補 AI 實際回覆的截圖，人員總表 V、W 欄的結果截圖已放上。</aside>
 </section>

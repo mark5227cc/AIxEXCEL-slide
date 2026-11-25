@@ -1,45 +1,31 @@
-<section id="step-1-2" data-transition="fade" style="display:flex; flex-direction:column; gap:32px; padding:128px 128px 160px; background:#FFFFFF">
+<section id="step-1-2" data-transition="fade" style="display:flex; flex-direction:column; gap:32px; padding:128px 128px 160px; background:#ffffff">
   <div style="display:flex; flex-direction:column; gap:12px">
     <div style="display:flex; flex-direction:row; gap:16px; align-items:center">
-      <p style="padding:4px 20px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; color:#FFFFFF; background:#A066CB; border-radius:9999px">討論示範</p>
-      <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; letter-spacing:2px; color:#FFFFFF; background:#248DC5; padding:4px 20px; border-radius:9999px; align-self:flex-start">案例一｜步驟 1、2｜規則 1</p>
+      <p style="padding:4px 20px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; color:#ffffff; background:#a066cb; border-radius:256px">討論示範</p>
+      <p style="align-self:start; padding:4px 20px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; font-weight:700; letter-spacing:2px; color:#ffffff; background:#248dc5; border-radius:256px">案例一｜步驟 1、2</p>
     </div>
-    <h2 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:64px; font-weight:700; line-height:1.15; color:#2A2A2A">先把資料整理乾淨</h2>
+    <h2 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:64px; font-weight:700; line-height:1.15; color:#2a2a2a">先把資料整理乾淨</h2>
   </div>
   <div style="display:flex; flex-direction:row; gap:40px">
     <div style="display:flex; flex-direction:column; gap:16px; flex:1">
-      <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:32px; font-weight:700; line-height:1.2; color:#2A2A2A">步驟 1　課程日期取起日</h3>
-      <p style="padding:24px 28px; font-family:'LXGW WenKai Mono TC', 'Courier New', monospace; font-size:26px; line-height:1.6; color:#FFFFFF; background:#0C447C; border-radius:0">「貼上區」工作表的 G 欄是課程日期，內容是文字，長這樣：<br>112/09/01 00:00:00~112/09/30 23:59:00<br>前面的 112 是民國年。我想在 Q4 取出開始那一天，變成 Excel 的日期。<br>例如上面這筆要變成 2023/9/1。</p>
-      <p style="padding:14px 24px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.5; color:#2A2A2A; background:#F8F8F8; border-radius:0; border:1px solid #DCDDDD"><b>AI 回了什麼：</b>一條公式，把 112 加 1911 換成西元年，再組成日期。</p>
-      <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; font-weight:700; color:#0C447C">驗算｜Q4 應該是 2023/9/1</p>
+      <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:32px; font-weight:700; line-height:1.2; color:#2a2a2a">步驟 1　課程日期取起日</h3>
+      <p style="padding:24px 28px; font-family:'LXGW WenKai Mono TC', 'Courier New', monospace; font-size:26px; line-height:1.6; color:#ffffff; background:#0c447c; border-radius:0">「貼上區」工作表的 G 欄是課程日期，內容是文字，長這樣：<br>112/09/01 00:00:00~112/09/30 23:59:00<br>前面的 112 是民國年。我想在 Q4 取出開始那一天，變成 Excel 的日期。<br>例如上面這筆要變成 2023/9/1。</p>
+      <p style="padding:14px 24px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.5; color:#2a2a2a; background:#f8f8f8; border:1px solid #dcdddd; border-radius:0"><b>AI 回了什麼：</b>一條公式，把 112 加 1911 換成西元年，再組成日期。</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:16px; flex:1">
-      <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:32px; font-weight:700; line-height:1.2; color:#2A2A2A">步驟 2　只算符合的課，文字轉數字</h3>
-      <p style="padding:24px 28px; font-family:'LXGW WenKai Mono TC', 'Courier New', monospace; font-size:26px; line-height:1.6; color:#FFFFFF; background:#0C447C; border-radius:0">「貼上區」M 欄是積分，是文字格式，例如 0.50。N 欄是認可狀態。<br>請在 R4 顯示：認可狀態是「符合」就把積分變成數字，其他一律是 0。</p>
-      <p style="padding:14px 24px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.5; color:#2A2A2A; background:#F8F8F8; border-radius:0; border:1px solid #DCDDDD"><b>AI 回了什麼：</b>一條公式，「符合」的課才把積分轉成數字，其他都給 0。</p>
-      <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; font-weight:700; color:#0C447C">驗算｜R4、R5、R6 應該是 0.5、0、0.52</p>
+      <h3 style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:32px; font-weight:700; line-height:1.2; color:#2a2a2a">步驟 2　只算符合的課，文字轉數字</h3>
+      <p style="padding:24px 28px; font-family:'LXGW WenKai Mono TC', 'Courier New', monospace; font-size:26px; line-height:1.6; color:#ffffff; background:#0c447c; border-radius:0">「貼上區」M 欄是積分，是文字格式，例如 0.50。N 欄是認可狀態。<br>請在 R4 顯示：認可狀態是「符合」就把積分變成數字，其他一律是 0。</p>
+      <p style="padding:14px 24px; font-family:'Noto Sans TC', Arial, sans-serif; font-size:26px; line-height:1.5; color:#2a2a2a; background:#f8f8f8; border:1px solid #dcdddd; border-radius:0"><b>AI 回了什麼：</b>一條公式，「符合」的課才把積分轉成數字，其他都給 0。</p>
     </div>
   </div>
   <div style="position:absolute; right:128px; bottom:64px; left:128px; display:flex; flex-direction:row; justify-content:space-between">
-    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#2A2A2A">Excel × AI 長照行政課程</p>
-    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#2A2A2A">11 / 30</p>
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#2a2a2a">Excel × AI 長照行政課程</p>
+    <div style="flex:1"></div>
+    <p style="font-family:'Noto Sans TC', Arial, sans-serif; font-size:24px; color:#2a2a2a">12 / 35</p>
+    <div style="flex:0 1 32px"></div>
+    <div style="display:flex; flex-direction:column; padding:4px 0 0">
+      <img src="/_blob/f4065fe51ca6d9abe59760fb005155df" alt="GOGO Care 台灣長照學習平台" style="width:490px; height:28px; object-fit:contain">
+    </div>
   </div>
-  <aside>【時間】15:00–18:00（3 分鐘，講師講解）
-【對應規則】規則 1：只算認可狀態「符合」且積分大於 0 的課；課程日期取起日。
-【重點】
-・這張講的是「怎麼跟 AI 討論」，不講公式本身。每一步都照三段走：我怎麼問 → AI 回了什麼 → 怎麼驗算。
-・步驟 1（約 1 分 30 秒）：
-　怎麼問：先說工作表和欄位、貼一筆原始內容讓 AI 看到格式、說明 112 是民國年、最後給一個「應該變成什麼」的例子。
-　驗算：Q4 應該是 2023/9/1。如果顯示成一串數字，把儲存格格式改成日期。
-・步驟 2（約 1 分 30 秒），要教的觀念只有一個：「看起來是數字，Excel 不一定當它是數字」。
-　怎麼認出來：數字靠左對齊、儲存格左上角有綠色小三角形、SUM 加出來是 0 或比預期少。
-　為什麼會這樣：平台匯出的資料常把數字存成文字，不是你做錯。
-　怎麼問：在提問裡講一句「M 欄是文字格式」，AI 就會自己處理，你不用記函數。
-　驗算：R4、R5、R6 應該是 0.5、0、0.52（R5 是 0，因為那堂課的積分本來就是 0.00）。
-・一句話給學員：「加總結果怪怪的，先看是不是文字；是的話，告訴 AI。」
-・這兩步是「輔助欄」。R 欄叫「有效積分」，後面每一條規則都是拿 R 欄去加總。髒資料先整理乾淨，後面才會對。
-【備援公式】不上投影片、不在台上講解；AI 給的寫法不同時對照用。
-　Q4：=DATE(LEFT(G4,3)+1911, MID(G4,5,2), MID(G4,8,2))
-　R4：=IF(OR(G4="", N4&lt;&gt;"符合"), 0, VALUE(M4))
-【待辦】可補 AI 實際回覆的截圖，以及貼上區 G、M、N、Q、R 欄第 3 到 10 列的結果截圖。</aside>
+  <aside>【時間】15:00–18:00（3 分鐘，講師講解） 【對應規則】規則 1：只算認可狀態「符合」且積分大於 0 的課；課程日期取起日。 【重點】 ・這張講的是「怎麼跟 AI 討論」，不講公式本身。每一步都照三段走：我怎麼問 → AI 回了什麼 → 怎麼驗算。 ・步驟 1（約 1 分 30 秒）： 　怎麼問：先說工作表和欄位、貼一筆原始內容讓 AI 看到格式、說明 112 是民國年、最後給一個「應該變成什麼」的例子。 　驗算：Q4 應該是 2023/9/1。如果顯示成一串數字，把儲存格格式改成日期。 ・步驟 2（約 1 分 30 秒），要教的觀念只有一個：「看起來是數字，Excel 不一定當它是數字」。 　怎麼認出來：數字靠左對齊、儲存格左上角有綠色小三角形、SUM 加出來是 0 或比預期少。 　為什麼會這樣：平台匯出的資料常把數字存成文字，不是你做錯。 　怎麼問：在提問裡講一句「M 欄是文字格式」，AI 就會自己處理，你不用記函數。 　驗算：R4、R5、R6 應該是 0.5、0、0.52（R5 是 0，因為那堂課的積分本來就是 0.00）。 ・一句話給學員：「加總結果怪怪的，先看是不是文字；是的話，告訴 AI。」 ・這兩步是「輔助欄」。R 欄叫「有效積分」，後面每一條規則都是拿 R 欄去加總。髒資料先整理乾淨，後面才會對。 【備援公式】不上投影片、不在台上講解；AI 給的寫法不同時對照用。 　Q4：=DATE(LEFT(G4,3)+1911, MID(G4,5,2), MID(G4,8,2)) 　R4：=IF(OR(G4="", N4&lt;&gt;"符合"), 0, VALUE(M4)) 【待辦】可補 AI 實際回覆的截圖，以及貼上區 G、M、N、Q、R 欄第 3 到 10 列的結果截圖。</aside>
 </section>

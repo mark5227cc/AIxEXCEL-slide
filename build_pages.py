@@ -55,6 +55,7 @@ html, body {{ margin:0; height:100%; background:var(--bg); color:var(--fg);
 #stage section img {{ display:block; object-fit:cover; }}
 #stage section .crop-frame {{ overflow:hidden; display:block; }}
 #stage section aside {{ display:none; }}
+#stage section a {{ color:inherit; }}
 #bar {{ position:fixed; left:0; right:0; bottom:0; height:48px; display:flex; align-items:center;
   gap:12px; padding:0 16px; font-size:15px; color:var(--muted); background:#2a2a2a; }}
 #bar button {{ background:#3d3d3d; color:var(--fg); border:0; border-radius:0; padding:6px 12px;
