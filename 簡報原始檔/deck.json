@@ -39,21 +39,23 @@
     "stuck",
     "verify-how",
     "verify",
+    "ac435630",
     "case2-why",
     "case2",
     "case2-brief",
     "case2-findings",
+    "case2-formulas",
+    "locate",
+    "locate-choose",
     "case2-design",
     "case2-design-2",
     "case2-design-3",
     "case2-design-4",
-    "case2-formulas",
     "case2-verify",
-    "locate",
-    "locate-choose",
     "more-uses",
     "recap",
-    "fbfdf720"
+    "fbfdf720",
+    "1026dc7e"
   ],
   "sections": {
     "s1": {
